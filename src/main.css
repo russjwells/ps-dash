@@ -1,0 +1,24 @@
+html {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+  
+body {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+  
+#root {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    background-color: #ffffff;
+    color: #333;
+    justify-content: space-between;
+    flex-direction: column;
+}
