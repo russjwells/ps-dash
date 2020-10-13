@@ -9,20 +9,14 @@ const Segments = () => {
         <div className={css(styles.content)}>
             Segments
         </div>
-)
+    )
 
 }
 
 export default Segments
 
 const styles = StyleSheet.create({
-    red: {
-        backgroundColor: 'red',
-        color: "white"
-    },
-    blue: {
-        backgroundColor: 'blue'
-    },
+    
     flex: {
         display: 'flex',
         flex: 1,

@@ -6,8 +6,8 @@ import {Link} from 'react-router-dom'
 const Header = () => {
 
     return (
-        <div style={{backgroundColor: 'blue', color: 'white', fontWeight: 'bold', fontSize:'18pt', padding:'20px'}}>
-            <Link style={{textDecoration: 'none', color: 'white'}}to='/'>Postscript</Link>
+        <div style={{backgroundColor: '#3D2090', color: 'white', fontWeight: 'bold', fontSize:'18pt', padding:'20px'}}>
+            <Link style={{textDecoration: 'none', color: 'white'}} to='/'>Postscript</Link>
         </div>
     )
 

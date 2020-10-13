@@ -17,13 +17,6 @@ const SideMenu = () => {
 export default SideMenu
 
 const styles = StyleSheet.create({
-    red: {
-        backgroundColor: 'red',
-        color: "white"
-    },
-    blue: {
-        backgroundColor: 'blue'
-    },
     flex: {
         display: 'flex',
         flex: 1,
@@ -38,26 +31,10 @@ const styles = StyleSheet.create({
         flexDirection: "column",
     },
     smenuitem: {
-        padding: '10px 10px'
+        padding: '20px 20px'
     },
     smenulink: {
         textDecoration: 'none',
         color: '#fff'
-    },
-    content: {
-        display:'flex',
-        flex: 3,
-        backgroundColor: 'light-yellow',
-    },
-    header: {
-        display:'flex'
-    },
-    main: {
-        display:'flex',
-        flex: 1,
-    },
-    footer: {
-        display:'flex',
-        backgroundColor: '#0f0d08'
     }
 })

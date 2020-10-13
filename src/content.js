@@ -16,6 +16,9 @@ const Content = () => {
                 <Route path="/segments">
                     <Segments/>
                 </Route>
+                <Route path="/">
+                    <Campaigns/>
+                </Route>
             </Switch>
         </div>
 )
