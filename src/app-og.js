@@ -6,6 +6,7 @@ import {StyleSheet, css} from 'aphrodite'
 import Header from './header.js'
 import Main from './main.js'
 import Footer from './footer.js'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 
 const App = () => {
@@ -13,9 +14,11 @@ const App = () => {
     console.log("IsDataLoaded: " + isDataLoaded)
     return (
         <>
-            <Header />
-            <Main />
-            <Footer />
+            <Router>
+                <Header />
+                <Main />
+                <Footer />
+            </Router>
         </>
     )
 }

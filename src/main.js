@@ -2,16 +2,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
 import SideMenu from './sideMenu.js'
+import Content from './content.js'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 const Main = () => {
     return (
     <div className={css(styles.main)}>
         <SideMenu />
-        <div className={css(styles.content)}>
-            <p>
-                content here's
-            </p>
-        </div>
+        <Content />
     </div>
 )
 

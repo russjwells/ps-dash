@@ -1,19 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
-import {Link} from 'react-router-dom'
 
-const Header = () => {
+
+const Campaigns = () => {
 
     return (
-        <div style={{backgroundColor: 'blue', color: 'white', fontWeight: 'bold', fontSize:'18pt', padding:'20px'}}>
-            <Link style={{textDecoration: 'none', color: 'white'}}to='/'>Postscript</Link>
+        <div className={css(styles.content)}>
+            Campaigns
         </div>
-    )
+)
 
 }
 
-export default Header
+export default Campaigns
 
 const styles = StyleSheet.create({
     red: {
@@ -43,13 +43,10 @@ const styles = StyleSheet.create({
         display:'flex',
         flex: 3,
         backgroundColor: 'light-yellow',
+        padding: '20px'
     },
     header: {
         display:'flex'
-    },
-    link: {
-        textDecoration: 'none',
-        color: '#fff'
     },
     main: {
         display:'flex',

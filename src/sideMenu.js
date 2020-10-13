@@ -1,14 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
+import {Link} from 'react-router-dom'
 
 const SideMenu = () => {
 
     return (
         <div className={css(styles.sidemenu)}>
-            <div className={css(styles.smenuitem)}>Campaigns</div>
-            <div className={css(styles.smenuitem)}>Segments</div>
-            <div className={css(styles.smenuitem)}>More</div>
+            <Link to="/campaigns" className={css(styles.smenulink)}><div className={css(styles.smenuitem)}>Campaigns</div></Link>
+            <Link to="/segments" className={css(styles.smenulink)}><div className={css(styles.smenuitem)}>Segments</div></Link>
         </div>
     )
 
@@ -35,10 +35,14 @@ const styles = StyleSheet.create({
         color: '#d3d0ec',
         minWidth: '200px',
         maxWidth: '20%',
-        flexDirection: "column"
+        flexDirection: "column",
     },
     smenuitem: {
         padding: '10px 10px'
+    },
+    smenulink: {
+        textDecoration: 'none',
+        color: '#fff'
     },
     content: {
         display:'flex',

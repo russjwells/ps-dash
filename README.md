@@ -66,3 +66,12 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### ()()()()()()()()()()()()()()
+### HEY LOOK AT THIS PART
+### HOMEWORK NOTES AND WRITE UP
+
+So for me, a dashboard is something that you should always be able to see all of, or at least monitor the overview and issue commands easily, so when I came up with this, I decided to create a no scroll full screen experience. This is a command center style dash for your users. 
+
+Initially I started out with some sketching/wireframing of the UI on paper, then began creating the necessary HTML structure based in flexbox. I started with v2 parcel for the composability and speed, but switched to Create React App after I finished creating the app skeleton in one JSX to breaking it into components, and activiating them, adding a router and breathing life into the context with the sample data.
+
