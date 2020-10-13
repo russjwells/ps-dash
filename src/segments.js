@@ -5,34 +5,48 @@ import DashContext from './dashContext.js'
 
 
 const Segments = () => {
+
     const CampaignData = useContext(DashContext)
+    console.log("data:" + CampaignData)
     return (
-        <div className={css(styles.content)}>
+        <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
                 <h2>Segments</h2>
                 <button>+ New</button>
             </div>
-            <div>
-                {JSON.stringify(CampaignData)}
+            <div className={css(styles.content)}>
+                <code>{JSON.stringify(CampaignData.segments)}</code>
             </div>
-            {//data.Campaigns[0]
-            }
+            
         </div>
-    )
+)
 
 }
 
 export default Segments
 
 const styles = StyleSheet.create({
-    
+    red: {
+        backgroundColor: 'red',
+        color: "white"
+    },
+    blue: {
+        backgroundColor: 'blue'
+    },
+    container:{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+    },
     flex: {
         display: 'flex',
         flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     titlerow: {
         display: 'flex',
-        flex: 1,
+        flex: 0,
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: '50px'
@@ -51,9 +65,9 @@ const styles = StyleSheet.create({
     },
     content: {
         display:'flex',
-        flex: 3,
+        flex: 1,
         backgroundColor: 'light-yellow',
-        padding: '20px'
+        padding: '20px',
     },
     header: {
         display:'flex'
