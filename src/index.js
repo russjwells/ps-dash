@@ -4,6 +4,8 @@ import './index.css';
 import App from './app-og';
 import * as serviceWorker from './serviceWorker';
 import DashContext from './dashContext.js'
+import CampaignData from './data/campaigns.json'
+console.log(CampaignData)
 
 function Index() {
   const [isDataLoaded, setIsDataLoaded] = useState(false)
