@@ -6,12 +6,14 @@ import * as serviceWorker from './serviceWorker';
 import DashContext from './dashContext.js'
 import CampaignData from './data/campaigns.json'
 console.log(CampaignData)
-
+const data = CampaignData
 function Index() {
-  const [isDataLoaded, setIsDataLoaded] = useState(false)
+  //const [isDataLoaded, setIsDataLoaded] = useState(false)
+  const data = CampaignData
+  console.log(data)
   return (
       <>
-          <DashContext.Provider value={{isDataLoaded, setIsDataLoaded}}>
+          <DashContext.Provider value="hi from context">
               <App/>
           </DashContext.Provider>
       </>

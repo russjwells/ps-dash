@@ -10,8 +10,8 @@ import {BrowserRouter as Router} from 'react-router-dom'
 
 
 const App = () => {
-    const {isDataLoaded, setIsDataLoaded} = useContext(DashContext)
-    console.log("IsDataLoaded: " + isDataLoaded)
+    //const {isDataLoaded, setIsDataLoaded} = useContext(DashContext)
+    //console.log("IsDataLoaded: " + isDataLoaded)
     return (
         <>
             <Router>

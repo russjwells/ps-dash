@@ -1,13 +1,25 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
+import DashContext from './dashContext.js'
 
 
 const Campaigns = () => {
 
+    const CampaignData = useContext(DashContext)
+    console.log("data:" + CampaignData)
     return (
-        <div className={css(styles.content)}>
-            Campaigns
+        <div className={css(styles.container)}>
+            <div className={css(styles.titlerow)}>
+                <h2>Campaigns</h2>
+                <button>+ New</button>
+            </div>
+            <div className={css(styles.content)}>
+                <p>data</p>
+                {CampaignData}
+            </div>
+            {//data.Campaigns[0]
+            }
         </div>
 )
 
@@ -23,9 +35,23 @@ const styles = StyleSheet.create({
     blue: {
         backgroundColor: 'blue'
     },
+    container:{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+    },
     flex: {
         display: 'flex',
         flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    titlerow: {
+        display: 'flex',
+        flex: 0,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        height: '50px'
     },
     sidemenu: {
         display:'flex',
@@ -41,9 +67,9 @@ const styles = StyleSheet.create({
     },
     content: {
         display:'flex',
-        flex: 3,
+        flex: 1,
         backgroundColor: 'light-yellow',
-        padding: '20px'
+        padding: '20px',
     },
     header: {
         display:'flex'
