@@ -15,11 +15,10 @@ const Campaigns = () => {
                 <button>+ New</button>
             </div>
             <div className={css(styles.content)}>
-                <p>data</p>
-                {CampaignData}
+                <p>data:</p>
+                <p>{JSON.stringify(CampaignData)}</p>
             </div>
-            {//data.Campaigns[0]
-            }
+            
         </div>
 )
 

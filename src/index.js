@@ -1,19 +1,20 @@
-import React, {useState,} from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './app-og';
 import * as serviceWorker from './serviceWorker';
 import DashContext from './dashContext.js'
-import CampaignData from './data/campaigns.json'
-console.log(CampaignData)
-const data = CampaignData
+import SampleData from './data/campaigns.json'
+console.log(SampleData.campaigns[0].name)
+
 function Index() {
   //const [isDataLoaded, setIsDataLoaded] = useState(false)
-  const data = CampaignData
-  console.log(data)
+  console.log(SampleData)
+  const data = SampleData
+  console.log(JSON.stringify(data))
   return (
       <>
-          <DashContext.Provider value="hi from context">
+          <DashContext.Provider value={data}>
               <App/>
           </DashContext.Provider>
       </>
@@ -23,7 +24,9 @@ function Index() {
 export default Index
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Index>
+      <App />
+    </Index>
   </React.StrictMode>,
   document.getElementById('root')
 );

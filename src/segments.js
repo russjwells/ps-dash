@@ -13,7 +13,7 @@ const Segments = () => {
                 <button>+ New</button>
             </div>
             <div>
-                {CampaignData}
+                {JSON.stringify(CampaignData)}
             </div>
             {//data.Campaigns[0]
             }
