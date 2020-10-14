@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
-import {StyleSheet, css} from 'aphrodite'
+import {StyleSheet, css} from 'aphrodite/no-important'
 import DashContext from './dashContext.js'
 import { Table } from "semantic-ui-react"
 
@@ -26,43 +26,40 @@ const Campaigns = () => {
                 </div>
             </div>
             <div className={css(styles.content)}>
-            <Table singleLine>
-                <Table.Header>
-                <Table.Row>
-                    <Table.HeaderCell>id</Table.HeaderCell>
-                    <Table.HeaderCell>name</Table.HeaderCell>
-                    <Table.HeaderCell>text</Table.HeaderCell>
-                    <Table.HeaderCell>status</Table.HeaderCell>
-                    <Table.HeaderCell>segment_id</Table.HeaderCell>
-                    <Table.HeaderCell>media</Table.HeaderCell>
-                    
-                    <Table.HeaderCell>edit</Table.HeaderCell>
-                    <Table.HeaderCell>live</Table.HeaderCell>
-                </Table.Row>
-                </Table.Header>
-                <Table.Body>
-                {CampaignData.campaigns.map(el => {
-                    return (
-                    <Table.Row key={el.id}>
-                        <Table.Cell>{el.id}</Table.Cell>
-                        <Table.Cell>{el.name}</Table.Cell>
-                        <Table.Cell>{el.text}</Table.Cell>
-                        <Table.Cell>{el.status}</Table.Cell>
-                        <Table.Cell>{el.segment_id}</Table.Cell>
+                <Table singleLine>
+                    <Table.Header>
+                    <Table.Row>
                         
-                        <Table.Cell>{el.media}</Table.Cell>
+                        <Table.HeaderCell>Campaign</Table.HeaderCell>
+                        <Table.HeaderCell>SMS</Table.HeaderCell>
+                        <Table.HeaderCell>status</Table.HeaderCell>
+                        <Table.HeaderCell>Segment</Table.HeaderCell>
+                        <Table.HeaderCell>media</Table.HeaderCell>
                         
-                        <Table.Cell>Edit</Table.Cell>
-                        <Table.Cell>Edit</Table.Cell>
+                        <Table.HeaderCell>#</Table.HeaderCell>
+                        <Table.HeaderCell>CTR</Table.HeaderCell>
                     </Table.Row>
-                    );
-                })}
-                </Table.Body>
-            </Table>
+                    </Table.Header>
+                    <Table.Body>
+                    {CampaignData.campaigns.map(el => {
+                        return (
+                        <Table.Row key={el.id}>
+                        
+                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
+                            <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
+                            <Table.Cell>{el.status}</Table.Cell>
+                            <Table.Cell>{el.segment_id}</Table.Cell>
+                            
+                            <Table.Cell style={{width: '40px'}}>{el.media}</Table.Cell>
+                            
+                            <Table.Cell>Edit</Table.Cell>
+                            <Table.Cell><div style={{color: 'black'}}>🌟</div></Table.Cell>
+                        </Table.Row>
+                        );
+                    })}
+                    </Table.Body>
+                </Table>
             </div>
-
-            
-            
         </div>
 )
 

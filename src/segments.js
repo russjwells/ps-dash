@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
 import DashContext from './dashContext.js'
+import { Table } from "semantic-ui-react"
 
 
 const Segments = () => {
@@ -17,7 +18,26 @@ const Segments = () => {
                 </div>
             </div>
             <div className={css(styles.content)}>
-                <code>{JSON.stringify(CampaignData.segments)}</code>
+                <Table singleLine>
+                    <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>id</Table.HeaderCell>
+                        <Table.HeaderCell>Name</Table.HeaderCell>
+                        <Table.HeaderCell>Subscribers</Table.HeaderCell>
+                    </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                    {CampaignData.segments.map(el => {
+                        return (
+                        <Table.Row key={el.id}>
+                            <Table.Cell>{el.id}</Table.Cell>
+                            <Table.Cell>{el.name}</Table.Cell>
+                            <Table.Cell>{el.subscribers_count}</Table.Cell>
+                        </Table.Row>
+                        );
+                    })}
+                    </Table.Body>
+                </Table>
             </div>
             
         </div>
