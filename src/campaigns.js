@@ -13,14 +13,19 @@ const Campaigns = () => {
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
+                <div className={css(styles.switch)}>
+                    <div className={css(styles.lbutton)}>
+                        <div className={css(styles.buttonText)}>Sent</div>
+                    </div>
+                    <div className={css(styles.rbutton)}>
+                        <div className={css(styles.buttonText)}>Preview</div>
+                    </div>
+                </div>
                 <div className={css(styles.button)}>
                     <div className={css(styles.buttonText)}>New Campaign</div>
                 </div>
             </div>
             <div className={css(styles.content)}>
-                <code>{JSON.stringify(CampaignData.campaigns)}</code>
-            </div>
-
             <Table singleLine>
                 <Table.Header>
                 <Table.Row>
@@ -30,8 +35,7 @@ const Campaigns = () => {
                     <Table.HeaderCell>status</Table.HeaderCell>
                     <Table.HeaderCell>segment_id</Table.HeaderCell>
                     <Table.HeaderCell>media</Table.HeaderCell>
-                    <Table.HeaderCell>sent</Table.HeaderCell>
-                    <Table.HeaderCell>clicked</Table.HeaderCell>
+                    
                     <Table.HeaderCell>edit</Table.HeaderCell>
                     <Table.HeaderCell>live</Table.HeaderCell>
                 </Table.Row>
@@ -45,20 +49,19 @@ const Campaigns = () => {
                         <Table.Cell>{el.text}</Table.Cell>
                         <Table.Cell>{el.status}</Table.Cell>
                         <Table.Cell>{el.segment_id}</Table.Cell>
-                        <Table.Cell>{
-                            //el.stats.sent
-                        }</Table.Cell>
-                        <Table.Cell>{
-                            //el.stats.clicked
-                        }</Table.Cell>
+                        
                         <Table.Cell>{el.media}</Table.Cell>
                         
+                        <Table.Cell>Edit</Table.Cell>
                         <Table.Cell>Edit</Table.Cell>
                     </Table.Row>
                     );
                 })}
                 </Table.Body>
             </Table>
+            </div>
+
+            
             
         </div>
 )
@@ -92,6 +95,38 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
         marginLeft: '20px',
         marginTop: '10px'
+    },
+    switch: {
+        display:'flex',
+        flexDirection: 'row',
+    },
+    lbutton: {
+        cursor: 'pointer',
+        textAlign: 'center',
+        backgroundColor: '#742FCC',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        width: '160px',
+        height: '50px',
+        borderRadius: '20px 0px 0px 20px',
+        ':hover': {
+            backgroundColor: '#8942E3'
+        }
+    },
+    rbutton: {
+        cursor: 'pointer',
+        textAlign: 'center',
+        backgroundColor: '#742FCC',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        width: '160px',
+        height: '50px',
+        borderRadius: '0px 20px 20px 0px',
+        ':hover': {
+            backgroundColor: '#8942E3'
+        }
     },
     button: {
         cursor: 'pointer',
