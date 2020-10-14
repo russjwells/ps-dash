@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         display:'flex',
-        backgroundColor: '#0f0d08'
+        backgroundColor: '#0f0d08',
+        borderTop: '1px solid #534F5F'
     }
 })
