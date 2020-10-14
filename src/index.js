@@ -5,13 +5,13 @@ import App from './app-og';
 import * as serviceWorker from './serviceWorker';
 import DashContext from './dashContext.js'
 import SampleData from './data/campaigns.json'
-console.log(SampleData.campaigns[0].name)
+//console.log(SampleData.campaigns[0].name)
 
 function Index() {
   //const [isDataLoaded, setIsDataLoaded] = useState(false)
-  console.log(SampleData)
+  //console.log(SampleData)
   const data = SampleData
-  console.log(JSON.stringify(data))
+  //console.log(JSON.stringify(data))
   return (
       <>
           <DashContext.Provider value={data}>
@@ -24,9 +24,7 @@ function Index() {
 export default Index
 ReactDOM.render(
   <React.StrictMode>
-    <Index>
-      <App />
-    </Index>
+    <Index/>
   </React.StrictMode>,
   document.getElementById('root')
 );

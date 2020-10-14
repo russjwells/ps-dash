@@ -11,8 +11,10 @@ const Segments = () => {
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
-                <h2>Segments</h2>
-                <button>+ New</button>
+                <div className={css(styles.title)}>Segments</div>
+                <div className={css(styles.button)}>
+                    <div className={css(styles.buttonText)}>New Segment</div>
+                </div>
             </div>
             <div className={css(styles.content)}>
                 <code>{JSON.stringify(CampaignData.segments)}</code>
@@ -50,6 +52,30 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: '50px'
+    },
+    title: {
+        color: '#70F0D1F',
+        fontSize:'24pt',
+        fontWeight:'bold',
+        marginLeft: '20px',
+        marginTop: '10px'
+    },
+    button: {
+        cursor: 'pointer',
+        textAlign: 'center',
+        backgroundColor: '#742FCC',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        width: '160px',
+        height: '50px',
+        borderRadius: '20px',
+        ':hover': {
+            backgroundColor: '#8942E3'
+        }
+    },
+    buttonText: {
+        color: 'white'
     },
     sidemenu: {
         display:'flex',
