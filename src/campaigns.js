@@ -45,6 +45,12 @@ const Campaigns = () => {
                         <Table.Cell>{el.text}</Table.Cell>
                         <Table.Cell>{el.status}</Table.Cell>
                         <Table.Cell>{el.segment_id}</Table.Cell>
+                        <Table.Cell>{
+                            //el.stats.sent
+                        }</Table.Cell>
+                        <Table.Cell>{
+                            //el.stats.clicked
+                        }</Table.Cell>
                         <Table.Cell>{el.media}</Table.Cell>
                         
                         <Table.Cell>Edit</Table.Cell>
