@@ -41,17 +41,16 @@ const styles = StyleSheet.create({
         
     },
     smenuitemcurrent: {
-        
         padding: '20px 20px',
-        borderBottom: '1px solid #742FCC',
-        backgroundColor: 'purple',
+        borderBottom: '1px solid #0f0d08',
+        backgroundColor: '#8942E3',
     },
     smenuitem: {
         padding: '20px 20px',
         borderBottom: '1px solid #742FCC',
-        backgroundColor: '8269CC',
+        backgroundColor: '#513898',
         ':hover': {
-            backgroundColor: '#675EAA'
+            backgroundColor: '#7C58E1'
         }
     },
     smenulink: {
