@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
 import DashContext from './dashContext.js'
+import { Table } from "semantic-ui-react"
 
 
 const Campaigns = () => {
@@ -19,6 +20,39 @@ const Campaigns = () => {
             <div className={css(styles.content)}>
                 <code>{JSON.stringify(CampaignData.campaigns)}</code>
             </div>
+
+            <Table singleLine>
+                <Table.Header>
+                <Table.Row>
+                    <Table.HeaderCell>id</Table.HeaderCell>
+                    <Table.HeaderCell>name</Table.HeaderCell>
+                    <Table.HeaderCell>text</Table.HeaderCell>
+                    <Table.HeaderCell>status</Table.HeaderCell>
+                    <Table.HeaderCell>segment_id</Table.HeaderCell>
+                    <Table.HeaderCell>media</Table.HeaderCell>
+                    <Table.HeaderCell>sent</Table.HeaderCell>
+                    <Table.HeaderCell>clicked</Table.HeaderCell>
+                    <Table.HeaderCell>edit</Table.HeaderCell>
+                    <Table.HeaderCell>live</Table.HeaderCell>
+                </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                {CampaignData.campaigns.map(el => {
+                    return (
+                    <Table.Row key={el.id}>
+                        <Table.Cell>{el.id}</Table.Cell>
+                        <Table.Cell>{el.name}</Table.Cell>
+                        <Table.Cell>{el.text}</Table.Cell>
+                        <Table.Cell>{el.status}</Table.Cell>
+                        <Table.Cell>{el.segment_id}</Table.Cell>
+                        <Table.Cell>{el.media}</Table.Cell>
+                        
+                        <Table.Cell>Edit</Table.Cell>
+                    </Table.Row>
+                    );
+                })}
+                </Table.Body>
+            </Table>
             
         </div>
 )
