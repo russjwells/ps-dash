@@ -18,12 +18,12 @@ const Campaigns = () => {
         lSwitchBG = css(styles.lbutton)
         rSwitchBG = css(styles.rbuttonoff)
         lSwitchTxt = css(styles.lbuttonText)
-        rSwitchTxt = css(styles.buttonText)
+        rSwitchTxt = css(styles.buttonTextOff)
     } 
     if (sentOrPreview === "Preview") {
         lSwitchBG = css(styles.lbuttonoff)
         rSwitchBG = css(styles.rbutton)
-        lSwitchTxt = css(styles.buttonText)
+        lSwitchTxt = css(styles.buttonTextOff)
         rSwitchTxt = css(styles.buttonText)
     }
     
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     lbuttonoff: {
         cursor: 'pointer',
         textAlign: 'center',
-        backgroundColor: '#000',
+        backgroundColor: '#333',
         display:'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
         height: '50px',
         borderRadius: '20px 0px 0px 20px',
         ':hover': {
-            backgroundColor: '#8942E3'
+            backgroundColor: '#333'
         }
     },
     rbutton: {
@@ -202,7 +202,7 @@ const styles = StyleSheet.create({
     rbuttonoff: {
         cursor: 'pointer',
         textAlign: 'center',
-        backgroundColor: '#000',
+        backgroundColor: '#333',
         display:'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         height: '50px',
         borderRadius: '0px 20px 20px 0px',
         ':hover': {
-            backgroundColor: '#8942E3'
+            backgroundColor: '#444'
         }
     },
     button: {
@@ -229,6 +229,12 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: 'white'
+    },
+    buttonTextOff: {
+        color: 'white',
+        ':hover': {
+            color: 'white',
+        }
     },
     sidemenu: {
         display:'flex',
