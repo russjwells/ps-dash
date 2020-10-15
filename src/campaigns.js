@@ -4,6 +4,7 @@ import {StyleSheet, css} from 'aphrodite/no-important'
 import DashContext from './dashContext.js'
 import { Table } from "semantic-ui-react"
 import {Link} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 
 
 const Campaigns = () => {
@@ -34,82 +35,73 @@ const Campaigns = () => {
                 </Link>
             </div>
             <div className={css(styles.content)}>
-                <Table singleLine>
+                <Switch>
+                    <Route path="/campaigns/sent">
+                        <Table singleLine>
+                            <Table.Header>
+                            <Table.Row>
+                                
+                                <Table.HeaderCell>Campaign</Table.HeaderCell>
+                                <Table.HeaderCell>SMS</Table.HeaderCell>
+                                <Table.HeaderCell>Media</Table.HeaderCell>
+                                
+                                <Table.HeaderCell>Segment</Table.HeaderCell>
+                                
+                                
+                                <Table.HeaderCell>#</Table.HeaderCell>
+                                <Table.HeaderCell>CTR</Table.HeaderCell>
+                            </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                            {CampaignData.campaigns.map(el => {
+                                return (
+                                <Table.Row key={el.id}>
+                                
+                                    <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
+                                    <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
+                                    <Table.Cell style={{width: '40px'}}>
+                                        {el.media && <img src={el.media} width="50px" height="50px" />}
+                                    </Table.Cell>
+                                    
+                                    <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
+                                </Table.Row>
+                                );
+                            })}
+                            </Table.Body>
+                        </Table>
+                    </Route>
+                    <Route path="/campaigns/preview">
+                    <Table singleLine>
                     <Table.Header>
                     <Table.Row>
-                        
                         <Table.HeaderCell>Campaign</Table.HeaderCell>
                         <Table.HeaderCell>SMS</Table.HeaderCell>
                         <Table.HeaderCell>Media</Table.HeaderCell>
-                        
                         <Table.HeaderCell>Segment</Table.HeaderCell>
-                        
-                        
-                        <Table.HeaderCell>#</Table.HeaderCell>
-                        <Table.HeaderCell>CTR</Table.HeaderCell>
                     </Table.Row>
                     </Table.Header>
                     <Table.Body>
                     {CampaignData.campaigns.map(el => {
                         return (
                         <Table.Row key={el.id}>
-                        
                             <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
                             <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
                             <Table.Cell style={{width: '40px'}}>
-                                <img src={el.media} width="50px" height="50px" />
+                                {el.media && <img src={el.media} width="50px" height="50px" />}
                             </Table.Cell>
-                            
                             <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
-                            
-                            
-                            
-                            
-                            <Table.Cell>Edit</Table.Cell>
-                            <Table.Cell><div style={{color: 'black'}}>🌟</div></Table.Cell>
                         </Table.Row>
                         );
                     })}
                     </Table.Body>
                 </Table>
-                <Table singleLine>
-                    <Table.Header>
-                    <Table.Row>
-                        
-                        <Table.HeaderCell>Campaign</Table.HeaderCell>
-                        <Table.HeaderCell>SMS</Table.HeaderCell>
-                        <Table.HeaderCell>Media</Table.HeaderCell>
-                        
-                        <Table.HeaderCell>Segment</Table.HeaderCell>
-                        
-                        
-                        <Table.HeaderCell>#</Table.HeaderCell>
-                        <Table.HeaderCell>CTR</Table.HeaderCell>
-                    </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                    {CampaignData.campaigns.map(el => {
-                        return (
-                        <Table.Row key={el.id}>
-                        
-                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
-                            <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                            <Table.Cell style={{width: '40px'}}>
-                                <img src={el.media} width="50px" height="50px" />
-                            </Table.Cell>
-                            
-                            <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
-                            
-                            
-                            
-                            
-                            <Table.Cell><Link to={`/campaigns/edit/new/${el.id}`}>Edit</Link></Table.Cell>
-                            <Table.Cell><div style={{color: 'black'}}>🌟</div></Table.Cell>
-                        </Table.Row>
-                        );
-                    })}
-                    </Table.Body>
-                </Table>
+                    </Route>
+                    <Route path="/edit">
+                    
+                    </Route>
+                </Switch>
+                
+                
             </div>
         </div>
 )

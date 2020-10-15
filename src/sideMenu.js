@@ -16,7 +16,7 @@ const SideMenu = () => {
     }
     return (
         <div className={css(styles.sidemenu)}>
-            <Link to="/campaigns" onClick={()=>setPage("Campaigns")} className={css(styles.smenulink)}><div className={campaignStyle}>🌟 Campaigns</div></Link>
+            <Link to="/campaigns/sent" onClick={()=>setPage("Campaigns")} className={css(styles.smenulink)}><div className={campaignStyle}>🌟 Campaigns</div></Link>
             <Link to="/segments" onClick={()=>setPage("Segments")} className={css(styles.smenulink)}><div className={segmentStyle}>💯 Segments</div></Link>
         </div>
     )
