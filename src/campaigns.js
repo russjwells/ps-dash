@@ -1,12 +1,13 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite/no-important'
 import DashContext from './dashContext.js'
 import { Table } from "semantic-ui-react"
+import {Link} from 'react-router-dom'
 
 
 const Campaigns = () => {
-
+    const [sentOrPreview, setSentOrPreview] = useState("Sent")
     const CampaignData = useContext(DashContext)
     console.log("data:" + CampaignData)
     return (
@@ -14,16 +15,23 @@ const Campaigns = () => {
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
                 <div className={css(styles.switch)}>
-                    <div className={css(styles.lbutton)}>
-                        <div className={css(styles.buttonText)}>Sent</div>
-                    </div>
-                    <div className={css(styles.rbutton)}>
-                        <div className={css(styles.buttonText)}>Preview</div>
-                    </div>
+                    <Link to="/campaigns/sent" onClick={() => setSentOrPreview("Sent")} className={css(styles.link)}>
+                        <div className={css(styles.lbutton)}>
+                            <div className={css(styles.buttonText)}>Sent</div>
+                        </div>
+                    </Link>
+                    <Link to="/campaigns/preview" onClick={() => setSentOrPreview("Sent")} className={css(styles.link)}>
+                        <div className={css(styles.rbutton)}>
+                            <div className={css(styles.buttonText)}>Preview</div>
+                        </div>
+                    </Link>
+                    
                 </div>
+                <Link to="/campaigns/edit/new" className={css(styles.link)}>
                 <div className={css(styles.button)}>
                     <div className={css(styles.buttonText)}>New Campaign</div>
                 </div>
+                </Link>
             </div>
             <div className={css(styles.content)}>
                 <Table singleLine>
@@ -32,9 +40,10 @@ const Campaigns = () => {
                         
                         <Table.HeaderCell>Campaign</Table.HeaderCell>
                         <Table.HeaderCell>SMS</Table.HeaderCell>
-                        <Table.HeaderCell>status</Table.HeaderCell>
+                        <Table.HeaderCell>Media</Table.HeaderCell>
+                        
                         <Table.HeaderCell>Segment</Table.HeaderCell>
-                        <Table.HeaderCell>media</Table.HeaderCell>
+                        
                         
                         <Table.HeaderCell>#</Table.HeaderCell>
                         <Table.HeaderCell>CTR</Table.HeaderCell>
@@ -47,12 +56,54 @@ const Campaigns = () => {
                         
                             <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
                             <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                            <Table.Cell>{el.status}</Table.Cell>
-                            <Table.Cell>{el.segment_id}</Table.Cell>
+                            <Table.Cell style={{width: '40px'}}>
+                                <img src={el.media} width="50px" height="50px" />
+                            </Table.Cell>
                             
-                            <Table.Cell style={{width: '40px'}}>{el.media}</Table.Cell>
+                            <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
+                            
+                            
+                            
                             
                             <Table.Cell>Edit</Table.Cell>
+                            <Table.Cell><div style={{color: 'black'}}>🌟</div></Table.Cell>
+                        </Table.Row>
+                        );
+                    })}
+                    </Table.Body>
+                </Table>
+                <Table singleLine>
+                    <Table.Header>
+                    <Table.Row>
+                        
+                        <Table.HeaderCell>Campaign</Table.HeaderCell>
+                        <Table.HeaderCell>SMS</Table.HeaderCell>
+                        <Table.HeaderCell>Media</Table.HeaderCell>
+                        
+                        <Table.HeaderCell>Segment</Table.HeaderCell>
+                        
+                        
+                        <Table.HeaderCell>#</Table.HeaderCell>
+                        <Table.HeaderCell>CTR</Table.HeaderCell>
+                    </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                    {CampaignData.campaigns.map(el => {
+                        return (
+                        <Table.Row key={el.id}>
+                        
+                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
+                            <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
+                            <Table.Cell style={{width: '40px'}}>
+                                <img src={el.media} width="50px" height="50px" />
+                            </Table.Cell>
+                            
+                            <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
+                            
+                            
+                            
+                            
+                            <Table.Cell><Link to={`/campaigns/edit/new/${el.id}`}>Edit</Link></Table.Cell>
                             <Table.Cell><div style={{color: 'black'}}>🌟</div></Table.Cell>
                         </Table.Row>
                         );
@@ -96,6 +147,10 @@ const styles = StyleSheet.create({
     switch: {
         display:'flex',
         flexDirection: 'row',
+    },
+    link: {
+        textDecoration: 'none',
+        color: '#fff'
     },
     lbutton: {
         cursor: 'pointer',
