@@ -10,23 +10,38 @@ import {Switch, Route} from 'react-router-dom'
 const Campaigns = () => {
     const [sentOrPreview, setSentOrPreview] = useState("Sent")
     const CampaignData = useContext(DashContext)
-    console.log("data:" + CampaignData)
+    let lSwitchBG
+    let rSwitchBG
+    let lSwitchTxt
+    let rSwitchTxt
+    if (sentOrPreview === "Sent") {
+        lSwitchBG = css(styles.lbutton)
+        rSwitchBG = css(styles.rbuttonoff)
+        lSwitchTxt = css(styles.lbuttonText)
+        rSwitchTxt = css(styles.buttonText)
+    } 
+    if (sentOrPreview === "Preview") {
+        lSwitchBG = css(styles.lbuttonoff)
+        rSwitchBG = css(styles.rbutton)
+        lSwitchTxt = css(styles.buttonText)
+        rSwitchTxt = css(styles.buttonText)
+    }
+    
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
                 <div className={css(styles.switch)}>
                     <Link to="/campaigns/sent" onClick={() => setSentOrPreview("Sent")} className={css(styles.link)}>
-                        <div className={css(styles.lbutton)}>
-                            <div className={css(styles.buttonText)}>Sent</div>
+                        <div className={lSwitchBG}>
+                            <div className={lSwitchTxt}>Sent</div>
                         </div>
                     </Link>
-                    <Link to="/campaigns/preview" onClick={() => setSentOrPreview("Sent")} className={css(styles.link)}>
-                        <div className={css(styles.rbutton)}>
-                            <div className={css(styles.buttonText)}>Preview</div>
+                    <Link to="/campaigns/preview" onClick={() => setSentOrPreview("Preview")} className={css(styles.link)}>
+                        <div className={rSwitchBG}>
+                            <div className={rSwitchTxt}>Preview</div>
                         </div>
                     </Link>
-                    
                 </div>
                 <Link to="/campaigns/edit/new" className={css(styles.link)}>
                 <div className={css(styles.button)}>
@@ -40,32 +55,28 @@ const Campaigns = () => {
                         <Table singleLine>
                             <Table.Header>
                             <Table.Row>
-                                
                                 <Table.HeaderCell>Campaign</Table.HeaderCell>
                                 <Table.HeaderCell>SMS</Table.HeaderCell>
                                 <Table.HeaderCell>Media</Table.HeaderCell>
-                                
-                                <Table.HeaderCell>Segment</Table.HeaderCell>
-                                
-                                
                                 <Table.HeaderCell>#</Table.HeaderCell>
                                 <Table.HeaderCell>CTR</Table.HeaderCell>
                             </Table.Row>
                             </Table.Header>
                             <Table.Body>
                             {CampaignData.campaigns.map(el => {
-                                return (
-                                <Table.Row key={el.id}>
-                                
-                                    <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
-                                    <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                                    <Table.Cell style={{width: '40px'}}>
-                                        {el.media && <img src={el.media} width="50px" height="50px" />}
-                                    </Table.Cell>
-                                    
-                                    <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
-                                </Table.Row>
-                                );
+                                 if (el.status === 'Sent'){
+                                    return (
+                                        <Table.Row key={el.id}>
+                                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
+                                            <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
+                                            <Table.Cell style={{width: '40px'}}>
+                                                {el.media && <img src={el.media} width="50px" height="50px" />}
+                                            </Table.Cell>
+                                            
+                                            <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
+                                        </Table.Row>
+                                        )
+                                 }
                             })}
                             </Table.Body>
                         </Table>
@@ -82,16 +93,18 @@ const Campaigns = () => {
                     </Table.Header>
                     <Table.Body>
                     {CampaignData.campaigns.map(el => {
-                        return (
-                        <Table.Row key={el.id}>
-                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
-                            <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                            <Table.Cell style={{width: '40px'}}>
-                                {el.media && <img src={el.media} width="50px" height="50px" />}
-                            </Table.Cell>
-                            <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
-                        </Table.Row>
-                        );
+                        if (el.status === 'Preview'){
+                            return (
+                            <Table.Row key={el.id}>
+                                <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
+                                <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
+                                <Table.Cell style={{width: '40px'}}>
+                                    {el.media && <img src={el.media} width="50px" height="50px" />}
+                                </Table.Cell>
+                                <Table.Cell style={{width: '40px'}}>{JSON.toString(CampaignData.segments[el.segment_id])}</Table.Cell>
+                            </Table.Row>
+                            )
+                        }
                     })}
                     </Table.Body>
                 </Table>
@@ -158,10 +171,38 @@ const styles = StyleSheet.create({
             backgroundColor: '#8942E3'
         }
     },
+    lbuttonoff: {
+        cursor: 'pointer',
+        textAlign: 'center',
+        backgroundColor: '#000',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        width: '160px',
+        height: '50px',
+        borderRadius: '20px 0px 0px 20px',
+        ':hover': {
+            backgroundColor: '#8942E3'
+        }
+    },
     rbutton: {
         cursor: 'pointer',
         textAlign: 'center',
         backgroundColor: '#742FCC',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        width: '160px',
+        height: '50px',
+        borderRadius: '0px 20px 20px 0px',
+        ':hover': {
+            backgroundColor: '#8942E3'
+        }
+    },
+    rbuttonoff: {
+        cursor: 'pointer',
+        textAlign: 'center',
+        backgroundColor: '#000',
         display:'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
