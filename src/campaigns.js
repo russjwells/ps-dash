@@ -5,45 +5,18 @@ import DashContext from './dashContext.js'
 import { Table } from "semantic-ui-react"
 import {Link} from 'react-router-dom'
 import {Switch, Route} from 'react-router-dom'
+import SwitchButton from './switchButton.js'
 
 
 const Campaigns = () => {
-    const [sentOrPreview, setSentOrPreview] = useState("Sent")
+    const [pageState, setPageState] = useState("Sent")
     const CampaignData = useContext(DashContext)
-    let lSwitchBG
-    let rSwitchBG
-    let lSwitchTxt
-    let rSwitchTxt
-    if (sentOrPreview === "Sent") {
-        lSwitchBG = css(styles.lbutton)
-        rSwitchBG = css(styles.rbuttonoff)
-        lSwitchTxt = css(styles.lbuttonText)
-        rSwitchTxt = css(styles.buttonTextOff)
-    } 
-    if (sentOrPreview === "Preview") {
-        lSwitchBG = css(styles.lbuttonoff)
-        rSwitchBG = css(styles.rbutton)
-        lSwitchTxt = css(styles.buttonTextOff)
-        rSwitchTxt = css(styles.buttonText)
-    }
-    
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
-                <div className={css(styles.switch)}>
-                    <Link to="/campaigns/sent" onClick={() => setSentOrPreview("Sent")} className={css(styles.link)}>
-                        <div className={lSwitchBG}>
-                            <div className={lSwitchTxt}>Sent</div>
-                        </div>
-                    </Link>
-                    <Link to="/campaigns/preview" onClick={() => setSentOrPreview("Preview")} className={css(styles.link)}>
-                        <div className={rSwitchBG}>
-                            <div className={rSwitchTxt}>Preview</div>
-                        </div>
-                    </Link>
-                </div>
-                <Link to="/campaigns/edit/new" className={css(styles.link)}>
+                <SwitchButton leftLink="/campaigns/sent" rightLink="/campaigns/preview" leftLabel="Sent" rightLabel="Preview" />
+                <Link to="/campaigns/edit/new" onClick={() => setPageState("New")} className={css(styles.link)}>
                 <div className={css(styles.button)}>
                     <div className={css(styles.buttonText)}>New Campaign</div>
                 </div>
@@ -180,9 +153,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         width: '160px',
         height: '50px',
+        borderColor: '#742FCC',
         borderRadius: '20px 0px 0px 20px',
         ':hover': {
-            backgroundColor: '#333'
+            backgroundColor: '#444'
         }
     },
     rbutton: {
