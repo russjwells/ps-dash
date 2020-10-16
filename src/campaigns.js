@@ -6,6 +6,8 @@ import { Table } from "semantic-ui-react"
 import {Link} from 'react-router-dom'
 import {Switch, Route} from 'react-router-dom'
 import SwitchButton from './switchButton.js'
+import Sent from './sent.js'
+import Preview from './preview.js'
 
 
 const Campaigns = () => {
@@ -17,70 +19,18 @@ const Campaigns = () => {
                 <div className={css(styles.title)}>Campaigns</div>
                 <SwitchButton leftLink="/campaigns/sent" rightLink="/campaigns/preview" leftLabel="Sent" rightLabel="Preview" />
                 <Link to="/campaigns/edit/new" onClick={() => setPageState("New")} className={css(styles.link)}>
-                <div className={css(styles.button)}>
-                    <div className={css(styles.buttonText)}>New Campaign</div>
-                </div>
+                    <div className={css(styles.button)}>
+                        <div className={css(styles.buttonText)}>New Campaign</div>
+                    </div>
                 </Link>
             </div>
             <div className={css(styles.content)}>
                 <Switch>
                     <Route path="/campaigns/sent">
-                        <Table singleLine>
-                            <Table.Header>
-                            <Table.Row>
-                                <Table.HeaderCell>Campaign</Table.HeaderCell>
-                                <Table.HeaderCell>SMS</Table.HeaderCell>
-                                <Table.HeaderCell>Media</Table.HeaderCell>
-                                <Table.HeaderCell>#</Table.HeaderCell>
-                                <Table.HeaderCell>CTR</Table.HeaderCell>
-                            </Table.Row>
-                            </Table.Header>
-                            <Table.Body>
-                            {CampaignData.campaigns.map(el => {
-                                 if (el.status === 'Sent'){
-                                    return (
-                                        <Table.Row key={el.id}>
-                                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
-                                            <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                                            <Table.Cell style={{width: '40px'}}>
-                                                {el.media && <img src={el.media} width="50px" height="50px" />}
-                                            </Table.Cell>
-                                            
-                                            <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
-                                        </Table.Row>
-                                        )
-                                 }
-                            })}
-                            </Table.Body>
-                        </Table>
+                        <Sent />
                     </Route>
                     <Route path="/campaigns/preview">
-                    <Table singleLine>
-                    <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell>Campaign</Table.HeaderCell>
-                        <Table.HeaderCell>SMS</Table.HeaderCell>
-                        <Table.HeaderCell>Media</Table.HeaderCell>
-                        <Table.HeaderCell>Segment</Table.HeaderCell>
-                    </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                    {CampaignData.campaigns.map(el => {
-                        if (el.status === 'Preview'){
-                            return (
-                            <Table.Row key={el.id}>
-                                <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
-                                <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                                <Table.Cell style={{width: '40px'}}>
-                                    {el.media && <img src={el.media} width="50px" height="50px" />}
-                                </Table.Cell>
-                                <Table.Cell style={{width: '40px'}}>{JSON.toString(CampaignData.segments[el.segment_id])}</Table.Cell>
-                            </Table.Row>
-                            )
-                        }
-                    })}
-                    </Table.Body>
-                </Table>
+                        <Preview />
                     </Route>
                     <Route path="/edit">
                     
