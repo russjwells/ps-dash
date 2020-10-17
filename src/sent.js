@@ -29,7 +29,7 @@ const Sent = () => {
                                     {el.stats && el.stats.sent}
                                 </Table.Cell>
                                 <Table.Cell style={{width: '40px'}}>
-                                    {el.stats && el.stats.clicked/el.stats.sent}
+                                    {el.stats && (el.stats.clicked/el.stats.sent).toFixed(4)*100 + "%"}
                                 </Table.Cell>
                             </Table.Row>
                             )

@@ -1,57 +1,37 @@
-import React, {useContext, useState} from 'react'
-import ReactDOM from 'react-dom'
-import {StyleSheet, css} from 'aphrodite/no-important'
+import React, {useContext} from 'react'
 import DashContext from './dashContext.js'
-import { Table } from "semantic-ui-react"
-import {Link} from 'react-router-dom'
-import {Switch, Route} from 'react-router-dom'
-import SwitchButton from './switchButton.js'
-import Sent from './sent.js'
-import Preview from './preview.js'
-import Edit from './edit.js'
+import {StyleSheet, css} from 'aphrodite/no-important'
 
-
-const Campaigns = () => {
-    const [pageState, setPageState] = useState("Sent")
+const Edit = () => {
     const CampaignData = useContext(DashContext)
     return (
-        <div className={css(styles.container)}>
-            <div className={css(styles.titlerow)}>
-                <div className={css(styles.title)}>Campaigns</div>
-                <SwitchButton leftLink="/campaigns/sent" rightLink="/campaigns/preview" leftLabel="Sent" rightLabel="Preview" />
-                <Link to="/campaigns/edit/new" onClick={() => setPageState("New")} className={css(styles.link)}>
-                    <div className={css(styles.button)}>
-                        <div className={css(styles.buttonText)}>New Campaign</div>
-                    </div>
-                </Link>
-            </div>
-            <div className={css(styles.content)}>
-                <Switch>
-                    <Route path="/campaigns/sent">
-                        <Sent />
-                    </Route>
-                    <Route path="/campaigns/preview">
-                        <Preview />
-                    </Route>
-                    <Route path="/edit">
-                        <Edit />
-                    </Route>
-                </Switch>
-                
-                
-            </div>
+        <div className={styles.container}>
+            <div>edit</div>
+            <div>preview</div>
         </div>
-)
-
+        
+    )
 }
 
-export default Campaigns
+export default Edit
 
 const styles = StyleSheet.create({
     container:{
         display: 'flex',
         flex: 1,
+        flexDirection: 'row',
+    },
+    editArea:{
+        display: 'flex',
+        flex: 3,
         flexDirection: 'column',
+        backgroundColor: 'red',
+    },
+    livePreview:{
+        display: 'flex',
+        flex: 1,
+        flexDirection: 'column',
+        backgroundColor: 'green',
     },
     flex: {
         display: 'flex',
