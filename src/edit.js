@@ -1,13 +1,65 @@
-import React, {useContext} from 'react'
+import React, {useContext, useParams} from 'react'
 import DashContext from './dashContext.js'
 import {StyleSheet, css} from 'aphrodite/no-important'
+import { Dropdown } from 'semantic-ui-react'
+import './smartphone.scss'
+import './texting.scss'
 
 const Edit = () => {
-    const CampaignData = useContext(DashContext)
+    const Data = useContext(DashContext)
+    //let params = useParams()
     return (
-        <div className={styles.container}>
-            <div>edit</div>
-            <div>preview</div>
+        <div className={css(styles.container)}>
+            <div className={css(styles.editArea)}>
+                <h2>edit area </h2>
+                <h3>
+                    {//Data.campaigns[params.id].title
+                    }
+
+                </h3>
+                <input 
+                    //defaultValue={Data.campaigns[params.id].title}
+                />
+                <h3>Tags</h3>
+                <h4>Name</h4>
+                <input />
+                <h4>Shop</h4>
+                <input />
+                <h4>Link</h4>
+                <input/>
+                <h3>SMS</h3>
+                <textarea width="300px" height="300px"/>
+                <h3>Media</h3>
+                <img src="#" width="300px" height="300px"></img>
+                <h3>Target</h3>
+                <select>
+                    <option>Segment 1</option>
+                    <option>Segment 2</option>
+                    <option>Segment 3</option>
+                </select>
+                <button>Save</button>
+                
+            </div>
+            <div className={css(styles.livePreview)}>
+                <div class="smartphone">
+                    <div class="content">
+                            <div class="message-blue">
+                                <p class="message-content">Hi, welcome to Postscript.</p>
+                                <div class="message-timestamp-left">SMS 13:37</div>
+                            </div>
+                            
+                            <div class="message-orange">
+                                <p class="message-content">I am so happy to be here!</p>
+                                <div class="message-timestamp-right">SMS 13:37</div>
+                            </div>
+                            
+                            <div class="message-blue">
+                                <p class="message-content">We're glad to have you.</p>
+                                <div class="message-timestamp-left">SMS 13:37</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
         </div>
         
     )
@@ -23,15 +75,15 @@ const styles = StyleSheet.create({
     },
     editArea:{
         display: 'flex',
-        flex: 3,
+        flex: 2,
         flexDirection: 'column',
-        backgroundColor: 'red',
+        backgroundColor: '#FFF',
     },
     livePreview:{
         display: 'flex',
         flex: 1,
         flexDirection: 'column',
-        backgroundColor: 'green',
+        backgroundColor: '#FFF',
     },
     flex: {
         display: 'flex',

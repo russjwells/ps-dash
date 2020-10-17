@@ -33,7 +33,7 @@ const Campaigns = () => {
                     <Route path="/campaigns/preview">
                         <Preview />
                     </Route>
-                    <Route path="/edit">
+                    <Route path="/campaigns/edit/:id">
                         <Edit />
                     </Route>
                 </Switch>
