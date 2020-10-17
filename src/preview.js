@@ -23,7 +23,7 @@ const Preview = () => {
                                 <Table.Cell style={{width: '40px'}}>
                                     {el.media && <img src={el.media} width="50px" height="50px" />}
                                 </Table.Cell>
-                                <Table.Cell style={{width: '40px'}}>{CampaignData.segments[el.segment_id] && CampaignData.segments[el.segment_id].name}</Table.Cell>
+                                <Table.Cell style={{width: '40px'}}>{CampaignData.segments[el.segment_id-1] && CampaignData.segments[el.segment_id-1].name}</Table.Cell>
                             </Table.Row>
                             )
                         }
