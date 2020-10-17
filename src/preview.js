@@ -9,7 +9,7 @@ const Preview = () => {
                     <Table.Row>
                         <Table.HeaderCell>Campaign</Table.HeaderCell>
                         <Table.HeaderCell>SMS</Table.HeaderCell>
-                        <Table.HeaderCell>Media</Table.HeaderCell>
+                        <Table.HeaderCell >Media</Table.HeaderCell>
                         <Table.HeaderCell>Segment</Table.HeaderCell>
                     </Table.Row>
                     </Table.Header>
@@ -23,7 +23,7 @@ const Preview = () => {
                                 <Table.Cell style={{width: '40px'}}>
                                     {el.media && <img src={el.media} width="50px" height="50px" />}
                                 </Table.Cell>
-                                <Table.Cell style={{width: '40px'}}>{JSON.toString(CampaignData.segments[el.segment_id])}</Table.Cell>
+                                <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
                             </Table.Row>
                             )
                         }

@@ -25,7 +25,12 @@ const Sent = () => {
                                     {el.media && <img src={el.media} width="50px" height="50px" />}
                                 </Table.Cell>
                                 
-                                <Table.Cell style={{width: '40px'}}>{el.segment_id}</Table.Cell>
+                                <Table.Cell style={{width: '40px'}}>
+                                    {el.stats && el.stats.sent}
+                                </Table.Cell>
+                                <Table.Cell style={{width: '40px'}}>
+                                    {el.stats && el.stats.clicked/el.stats.sent}
+                                </Table.Cell>
                             </Table.Row>
                             )
                     }
