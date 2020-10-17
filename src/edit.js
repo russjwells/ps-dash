@@ -1,20 +1,21 @@
-import React, {useContext, useParams} from 'react'
+import React, {useContext} from 'react'
 import DashContext from './dashContext.js'
 import {StyleSheet, css} from 'aphrodite/no-important'
 import { Dropdown } from 'semantic-ui-react'
 import './smartphone.scss'
 import './texting.scss'
+import {useParams} from 'react-router-dom'
 
 const Edit = () => {
     const Data = useContext(DashContext)
-    //let params = useParams()
+    let Params = useParams()
+    const MessagePreview = "Start your new campaign here..."
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.editArea)}>
-                <h2>edit area </h2>
+                <h2>{Params.id}</h2>
                 <h3>
-                    {//Data.campaigns[params.id].title
-                    }
+                    
 
                 </h3>
                 <input 
@@ -56,6 +57,11 @@ const Edit = () => {
                             <div class="message-blue">
                                 <p class="message-content">We're glad to have you.</p>
                                 <div class="message-timestamp-left">SMS 13:37</div>
+                            </div>
+
+                            <div class="message-orange">
+                                <p class="message-content">{MessagePreview}</p>
+                                <div class="message-timestamp-right">SMS 13:37</div>
                             </div>
                     </div>
                 </div>
