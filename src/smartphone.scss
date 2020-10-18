@@ -1,8 +1,8 @@
 /* The device with borders */
 .smartphone {
     position: relative;
-    width: 360px;
-    height: 640px;
+    width: 320px;
+    height: 560px;
     margin: auto;
     border: 16px black solid;
     border-top-width: 60px;
@@ -42,8 +42,8 @@
   
   /* The screen (or content) of the device */
   .smartphone .content {
-    width: 360px;
-    height: 640px;
-    background: white;
+    width: 320px;
+    height: 560px;
+    background: rgb(255, 255, 255);
     padding-top: 10px;
   }

@@ -11,8 +11,12 @@ const Edit = () => {
     const Data = useContext(DashContext)
     let Params = useParams()
     const [CampaignId, setCampaignId] = useState(Params.id)
-    const [smsText, setSmsText] = useState('')
+    const [smsText, setSmsText] = useState(Data.campaigns[Params.id-1].text)
     const MessagePreview = "Start your new campaign here..."
+
+    const handleChange = (event) => {
+        setSmsText(event.target.value);
+    };
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.editArea)}>
@@ -70,7 +74,8 @@ const Edit = () => {
                 <h3>SMS</h3>
                 <textarea 
                 className={css(styles.editSMS)}
-                defaultValue={Data.campaigns[Params.id-1].text}
+                defaultValue={smsText}
+                onChange={handleChange}
                 />
                 <h3>Media</h3>
                 <Table>
@@ -89,9 +94,11 @@ const Edit = () => {
                     
                     
                 <h3>Target</h3>
-                <select className={css(styles.editTargetSelect)}>
+                <select 
+                    className={css(styles.editTargetSelect)}
+                >
                 {Data.segments.map(el => {
-                    return (<option>{Data.segments[el.segment_id-1]}</option>)
+                    return (<option>{el.name}</option>)
                 })} 
                 </select>
                 <button>Save</button>
@@ -116,7 +123,7 @@ const Edit = () => {
                             </div>
 
                             <div class="message-orange">
-                                <p class="message-content">{Data.campaigns[Params.id-1].text}</p>
+                                <p class="message-content">{smsText}</p>
                                 <div class="message-timestamp-right">SMS 13:37</div>
                             </div>
                     </div>
@@ -143,7 +150,7 @@ const styles = StyleSheet.create({
     },
     editTitle:{
         width: '442px',
-        height: '60px',
+        height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
         fontSize: '16px'
@@ -159,7 +166,7 @@ const styles = StyleSheet.create({
     },
     editSMS:{
         width: '442px',
-	    height: '120px',
+	    height: '60px',
 	    border: '3px solid #cccccc',
         padding: '5px',
         resize: 'none'
@@ -168,6 +175,7 @@ const styles = StyleSheet.create({
         height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
+        fontSize: '16px'
     },
     editTargetSelect:{
         height: '30px',
