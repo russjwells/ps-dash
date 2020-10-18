@@ -9,6 +9,7 @@ import SwitchButton from './switchButton.js'
 import Sent from './sent.js'
 import Preview from './preview.js'
 import Edit from './edit.js'
+import New from './new.js'
 
 
 const Campaigns = () => {
@@ -19,7 +20,7 @@ const Campaigns = () => {
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
                 <SwitchButton leftLink="/campaigns/sent" rightLink="/campaigns/preview" leftLabel="Sent" rightLabel="Preview" />
-                <Link to="/campaigns/edit/new" onClick={() => setPageState("New")} className={css(styles.link)}>
+                <Link to="/campaigns/new" onClick={() => setPageState("New")} className={css(styles.link)}>
                     <div className={css(styles.button)}>
                         <div className={css(styles.buttonText)}>New Campaign</div>
                     </div>
@@ -35,6 +36,9 @@ const Campaigns = () => {
                     </Route>
                     <Route path="/campaigns/edit/:id">
                         <Edit />
+                    </Route>
+                    <Route path="/campaigns/new">
+                        <New />
                     </Route>
                 </Switch>
                 

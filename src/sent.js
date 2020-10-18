@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { Table } from "semantic-ui-react"
 import DashContext from './dashContext.js'
 const Sent = () => {
-    const CampaignData = useContext(DashContext)
+    const Data = useContext(DashContext)
     return (
         <Table singleLine>
             <Table.Header>
@@ -15,7 +15,7 @@ const Sent = () => {
                 </Table.Row>
             </Table.Header>
             <Table.Body>
-                {CampaignData.campaigns.map(el => {
+                {Data.campaigns.map(el => {
                     if (el.status === 'Sent'){
                         return (
                             <Table.Row key={el.id}>

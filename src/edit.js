@@ -1,42 +1,98 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import DashContext from './dashContext.js'
 import {StyleSheet, css} from 'aphrodite/no-important'
-import { Dropdown } from 'semantic-ui-react'
+import { Dropdown, TableCell, TableHeader, TableRow } from 'semantic-ui-react'
 import './smartphone.scss'
 import './texting.scss'
 import {useParams} from 'react-router-dom'
+import { Table } from "semantic-ui-react"
 
 const Edit = () => {
     const Data = useContext(DashContext)
     let Params = useParams()
+    const [CampaignId, setCampaignId] = useState(Params.id)
+    const [smsText, setSmsText] = useState('')
     const MessagePreview = "Start your new campaign here..."
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.editArea)}>
-                <h2>{Params.id}</h2>
-                <h3>
-                    
-
-                </h3>
-                <input 
-                    //defaultValue={Data.campaigns[params.id].title}
+                <h3>Campaign Title</h3>
+                <input className={css(styles.editTitle)}
+                    value={Data.campaigns[Params.id-1].name}
                 />
                 <h3>Tags</h3>
-                <h4>Name</h4>
-                <input />
-                <h4>Shop</h4>
-                <input />
-                <h4>Link</h4>
-                <input/>
+                <Table>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.Cell>
+                                <b>Short URL Link</b>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <b>Customer Name</b>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <b>Shop Title</b>
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <code>&#123;shop_link&#125;</code>
+                            </Table.Cell>
+                            <Table.Cell>
+                            <code>&#123;first_name&#125;</code>
+                            </Table.Cell>
+                            <Table.Cell>
+                            <code>&#123;shop_name&#125;</code>
+                            </Table.Cell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        <Table.Row>
+                            <Table.Cell>
+                                <input 
+                                    className={css(styles.editTag)} 
+                                    //value={}
+                                    //defaultValue={Data.campaigns[params.id].title}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                            <input className={css(styles.editTag)}
+                                    //defaultValue={Data.campaigns[params.id].title}
+                                />
+                            </Table.Cell>
+                            <Table.Cell>
+                            <input className={css(styles.editTag)}
+                                    //defaultValue={Data.campaigns[params.id].title}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                    </Table.Body>
+                </Table>
                 <h3>SMS</h3>
-                <textarea width="300px" height="300px"/>
+                <textarea 
+                className={css(styles.editSMS)}
+                value={Data.campaigns[Params.id-1].text}
+                />
                 <h3>Media</h3>
-                <img src="#" width="300px" height="300px"></img>
+                <Table>
+                    <Table.Row>
+                        <Table.Cell>
+                            <img src={Data.campaigns[Params.id-1].media} width="100px" height="100px" className={css(styles.editMediaImg)}></img>
+                        </Table.Cell>
+                        <Table.Cell>
+                            <input className={css(styles.editMediaLink)}
+                                defaultValue={Data.campaigns[Params.id-1].media}
+                            />
+                        </Table.Cell>
+                    </Table.Row>
+                </Table>
+                    
+                    
                 <h3>Target</h3>
-                <select>
-                    <option>Segment 1</option>
-                    <option>Segment 2</option>
-                    <option>Segment 3</option>
+                <select className={css(styles.editTargetSelect)}>
+                {Data.segments.map(el => {
+                    return (<option>{Data.segments[el.segment_id-1]}</option>)
+                })} 
                 </select>
                 <button>Save</button>
                 
@@ -60,7 +116,7 @@ const Edit = () => {
                             </div>
 
                             <div class="message-orange">
-                                <p class="message-content">{MessagePreview}</p>
+                                <p class="message-content">{Data.campaigns[Params.id-1].text}</p>
                                 <div class="message-timestamp-right">SMS 13:37</div>
                             </div>
                     </div>
@@ -80,10 +136,44 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
     },
     editArea:{
-        display: 'flex',
+        display: 'block',
         flex: 2,
         flexDirection: 'column',
         backgroundColor: '#FFF',
+    },
+    editTitle:{
+        width: '442px',
+        height: '60px',
+        border: '3px solid #cccccc',
+        padding: '5px',
+        fontSize: '16px'
+    },
+    editMediaLink:{
+        width: '442px',
+        height: '60px',
+        border: '3px solid #cccccc',
+        padding: '5px',
+    },
+    editMediaImg:{
+        border: '3px solid #cccccc',
+    },
+    editSMS:{
+        width: '442px',
+	    height: '120px',
+	    border: '3px solid #cccccc',
+        padding: '5px',
+        resize: 'none'
+    },
+    editTag:{
+        height: '30px',
+        border: '3px solid #cccccc',
+        padding: '5px',
+    },
+    editTargetSelect:{
+        height: '30px',
+        width: '400px',
+        border: '3px solid #cccccc',
+        padding: '5px',
     },
     livePreview:{
         display: 'flex',
