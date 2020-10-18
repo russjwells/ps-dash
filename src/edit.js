@@ -11,9 +11,13 @@ const Edit = () => {
     const Data = useContext(DashContext)
     let Params = useParams()
     const [CampaignId, setCampaignId] = useState(Params.id)
+    const [CampaignTitle, setCampaignTitle] =useState(Data.campaigns[Params.id-1].name)
     const [smsText, setSmsText] = useState(Data.campaigns[Params.id-1].text)
+    const [media, setMedia] = useState(Data.campaigns[Params.id-1].media)
     const [shop_linkTag, setShop_linkTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link)
     const [first_nameTag, setFirst_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name)
+    const [shop_nameTag, setShop_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name)
+    const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.segment_id)
 
     const handleTxtChange = (event) => {
         setSmsText(event.target.value);
@@ -23,7 +27,7 @@ const Edit = () => {
             <div className={css(styles.editArea)}>
                 <h3>Campaign Title</h3>
                 <input className={css(styles.editTitle)}
-                    defaultValue={Data.campaigns[Params.id-1].name}
+                    defaultValue={CampaignTitle}
                 />
                 <h3>Tags</h3>
                 <Table>
@@ -66,7 +70,7 @@ const Edit = () => {
                             </Table.Cell>
                             <Table.Cell>
                             <input className={css(styles.editTag)}
-                                    defaultValue={Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name}
+                                    defaultValue={shop_nameTag}
                                 />
                             </Table.Cell>
                         </Table.Row>
@@ -83,12 +87,12 @@ const Edit = () => {
                     <Table.Body>
                         <Table.Row>
                             <Table.Cell>
-                                <img src={Data.campaigns[Params.id-1].media} width="100px" height="100px" className={css(styles.editMediaImg)}></img>
+                                <img src={media} alt="attachment" width="100px" height="100px" className={css(styles.editMediaImg)}></img>
                             </Table.Cell>
                             <Table.Cell>
                                 <input 
                                     className={css(styles.editMediaLink)}
-                                    defaultValue={Data.campaigns[Params.id-1].media}
+                                    defaultValue={media}
                                 />
                             </Table.Cell>
                         </Table.Row>
@@ -101,8 +105,9 @@ const Edit = () => {
                     className={css(styles.editTargetSelect)}
                 >
                 {Data.segments.map(el => {
-                    console.log(Data.campaigns[Params.id-1].segment_id)
+                    console.log("Target segment: "+ TargetSegmentId)
                     if (el == (Data.campaigns[Params.id-1].segment_id)){
+                        console.log("select target in menu")
                         return (<option key={el.id} selected>{el.name}</option>)
                     }else{
                         return (<option key={el.id}>{el.name}</option>)
@@ -118,22 +123,12 @@ const Edit = () => {
                 <div className="smartphone">
                     <div className="content">
                             <div className="message-blue">
-                                <p className="message-content">Hi, welcome to Postscript.</p>
+                                <p className="message-content">Yes, let me in on the deals.</p>
                                 <div className="message-timestamp-left">SMS 13:37</div>
                             </div>
-                            
-                            <div className="message-orange">
-                                <p className="message-content">I am so happy to be here!</p>
-                                <div className="message-timestamp-right">SMS 13:37</div>
-                            </div>
-                            
-                            <div className="message-blue">
-                                <p className="message-content">We're glad to have you.</p>
-                                <div className="message-timestamp-left">SMS 13:37</div>
-                            </div>
-
                             <div className="message-orange">
                                 <p className="message-content">{smsText}</p>
+                                <img src={media} alt="attachment" width="200px" height="200px" className={css(styles.smsAttachImg)}></img>
                                 <div className="message-timestamp-right">SMS 13:37</div>
                             </div>
                     </div>
@@ -174,6 +169,9 @@ const styles = StyleSheet.create({
     },
     editMediaImg:{
         border: '3px solid #cccccc',
+    },
+    smsAttachImg:{
+        border: '0px solid #cccccc',
     },
     editSMS:{
         width: '442px',
