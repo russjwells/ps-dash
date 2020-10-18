@@ -12,9 +12,10 @@ const Edit = () => {
     let Params = useParams()
     const [CampaignId, setCampaignId] = useState(Params.id)
     const [smsText, setSmsText] = useState(Data.campaigns[Params.id-1].text)
-    const MessagePreview = "Start your new campaign here..."
+    const [shop_linkTag, setShop_linkTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link)
+    const [first_nameTag, setFirst_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name)
 
-    const handleChange = (event) => {
+    const handleTxtChange = (event) => {
         setSmsText(event.target.value);
     };
     return (
@@ -55,12 +56,12 @@ const Edit = () => {
                             <Table.Cell>
                                 <input 
                                     className={css(styles.editTag)} 
-                                    defaultValue={Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link}
+                                    defaultValue={shop_linkTag}
                                 />
                             </Table.Cell>
                             <Table.Cell>
                             <input className={css(styles.editTag)}
-                                    defaultValue={Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name}
+                                    defaultValue={first_nameTag}
                                 />
                             </Table.Cell>
                             <Table.Cell>
@@ -75,21 +76,23 @@ const Edit = () => {
                 <textarea 
                 className={css(styles.editSMS)}
                 defaultValue={smsText}
-                onChange={handleChange}
+                onChange={handleTxtChange}
                 />
                 <h3>Media</h3>
                 <Table>
-                    <Table.Row>
-                        <Table.Cell>
-                            <img src={Data.campaigns[Params.id-1].media} width="100px" height="100px" className={css(styles.editMediaImg)}></img>
-                        </Table.Cell>
-                        <Table.Cell>
-                            <input 
-                                className={css(styles.editMediaLink)}
-                                defaultValue={Data.campaigns[Params.id-1].media}
-                            />
-                        </Table.Cell>
-                    </Table.Row>
+                    <Table.Body>
+                        <Table.Row>
+                            <Table.Cell>
+                                <img src={Data.campaigns[Params.id-1].media} width="100px" height="100px" className={css(styles.editMediaImg)}></img>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <input 
+                                    className={css(styles.editMediaLink)}
+                                    defaultValue={Data.campaigns[Params.id-1].media}
+                                />
+                            </Table.Cell>
+                        </Table.Row>
+                    </Table.Body>
                 </Table>
                     
                     
@@ -98,33 +101,40 @@ const Edit = () => {
                     className={css(styles.editTargetSelect)}
                 >
                 {Data.segments.map(el => {
-                    return (<option>{el.name}</option>)
+                    console.log(Data.campaigns[Params.id-1].segment_id)
+                    if (el == (Data.campaigns[Params.id-1].segment_id)){
+                        return (<option key={el.id} selected>{el.name}</option>)
+                    }else{
+                        return (<option key={el.id}>{el.name}</option>)
+                    }
+                    
+                    
                 })} 
                 </select>
                 <button>Save</button>
                 
             </div>
             <div className={css(styles.livePreview)}>
-                <div class="smartphone">
-                    <div class="content">
-                            <div class="message-blue">
-                                <p class="message-content">Hi, welcome to Postscript.</p>
-                                <div class="message-timestamp-left">SMS 13:37</div>
+                <div className="smartphone">
+                    <div className="content">
+                            <div className="message-blue">
+                                <p className="message-content">Hi, welcome to Postscript.</p>
+                                <div className="message-timestamp-left">SMS 13:37</div>
                             </div>
                             
-                            <div class="message-orange">
-                                <p class="message-content">I am so happy to be here!</p>
-                                <div class="message-timestamp-right">SMS 13:37</div>
+                            <div className="message-orange">
+                                <p className="message-content">I am so happy to be here!</p>
+                                <div className="message-timestamp-right">SMS 13:37</div>
                             </div>
                             
-                            <div class="message-blue">
-                                <p class="message-content">We're glad to have you.</p>
-                                <div class="message-timestamp-left">SMS 13:37</div>
+                            <div className="message-blue">
+                                <p className="message-content">We're glad to have you.</p>
+                                <div className="message-timestamp-left">SMS 13:37</div>
                             </div>
 
-                            <div class="message-orange">
-                                <p class="message-content">{smsText}</p>
-                                <div class="message-timestamp-right">SMS 13:37</div>
+                            <div className="message-orange">
+                                <p className="message-content">{smsText}</p>
+                                <div className="message-timestamp-right">SMS 13:37</div>
                             </div>
                     </div>
                 </div>
@@ -156,10 +166,11 @@ const styles = StyleSheet.create({
         fontSize: '16px'
     },
     editMediaLink:{
-        width: '442px',
-        height: '60px',
+        width: '300px',
+        height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
+        fontSize: '16px'
     },
     editMediaImg:{
         border: '3px solid #cccccc',
