@@ -21,7 +21,11 @@ const Edit = () => {
 
     const handleTxtChange = (event) => {
         setSmsText(event.target.value);
-    };
+    }
+
+    const handleMediaChange = (event) => {
+        setMedia(event.target.value);
+    }
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.editArea)}>
@@ -78,9 +82,9 @@ const Edit = () => {
                 </Table>
                 <h3>SMS</h3>
                 <textarea 
-                className={css(styles.editSMS)}
-                defaultValue={smsText}
-                onChange={handleTxtChange}
+                    className={css(styles.editSMS)}
+                    defaultValue={smsText}
+                    onChange={handleTxtChange}
                 />
                 <h3>Media</h3>
                 <Table>
@@ -93,13 +97,12 @@ const Edit = () => {
                                 <input 
                                     className={css(styles.editMediaLink)}
                                     defaultValue={media}
+                                    onChange={handleMediaChange}
                                 />
                             </Table.Cell>
                         </Table.Row>
                     </Table.Body>
                 </Table>
-                    
-                    
                 <h3>Target</h3>
                 <select 
                     className={css(styles.editTargetSelect)}
@@ -117,7 +120,6 @@ const Edit = () => {
                 })} 
                 </select>
                 <button>Save</button>
-                
             </div>
             <div className={css(styles.livePreview)}>
                 <div className="smartphone">

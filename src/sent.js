@@ -22,7 +22,7 @@ const Sent = () => {
                                 <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
                                 <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
                                 <Table.Cell style={{width: '40px'}}>
-                                    {el.media && <img src={el.media} width="50px" height="50px" />}
+                                    {el.media && <img src={el.media} alt="smsPic" width="50px" height="50px" />}
                                 </Table.Cell>
                                 
                                 <Table.Cell style={{width: '40px'}}>
