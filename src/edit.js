@@ -18,7 +18,7 @@ const Edit = () => {
             <div className={css(styles.editArea)}>
                 <h3>Campaign Title</h3>
                 <input className={css(styles.editTitle)}
-                    value={Data.campaigns[Params.id-1].name}
+                    defaultValue={Data.campaigns[Params.id-1].name}
                 />
                 <h3>Tags</h3>
                 <Table>
@@ -51,18 +51,17 @@ const Edit = () => {
                             <Table.Cell>
                                 <input 
                                     className={css(styles.editTag)} 
-                                    //value={}
-                                    //defaultValue={Data.campaigns[params.id].title}
+                                    defaultValue={Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link}
                                 />
                             </Table.Cell>
                             <Table.Cell>
                             <input className={css(styles.editTag)}
-                                    //defaultValue={Data.campaigns[params.id].title}
+                                    defaultValue={Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name}
                                 />
                             </Table.Cell>
                             <Table.Cell>
                             <input className={css(styles.editTag)}
-                                    //defaultValue={Data.campaigns[params.id].title}
+                                    defaultValue={Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name}
                                 />
                             </Table.Cell>
                         </Table.Row>
@@ -71,7 +70,7 @@ const Edit = () => {
                 <h3>SMS</h3>
                 <textarea 
                 className={css(styles.editSMS)}
-                value={Data.campaigns[Params.id-1].text}
+                defaultValue={Data.campaigns[Params.id-1].text}
                 />
                 <h3>Media</h3>
                 <Table>
@@ -80,7 +79,8 @@ const Edit = () => {
                             <img src={Data.campaigns[Params.id-1].media} width="100px" height="100px" className={css(styles.editMediaImg)}></img>
                         </Table.Cell>
                         <Table.Cell>
-                            <input className={css(styles.editMediaLink)}
+                            <input 
+                                className={css(styles.editMediaLink)}
                                 defaultValue={Data.campaigns[Params.id-1].media}
                             />
                         </Table.Cell>

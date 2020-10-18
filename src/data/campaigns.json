@@ -16,6 +16,11 @@
         "id": 2,
         "name": "Labor Day Sale",
         "text": "Hey {first_name}, it's {shop_name}! We have a HUGE sale on Labor Day, get up to 30% off with LABOR30. {shop_link}",
+        "tags": {
+          "shop_link" : "shop.xyz",
+          "first_name" : "John",
+          "shop_name" : "Fly Fishin"
+        },
         "status": "Sent",
         "segment_id": 1,
         "media": null,
@@ -40,6 +45,11 @@
         "id": 4,
         "name": "Fall Decor Updates",
         "text": "Hey {first_name}! Back at {shop_name} we've gotten a WILD amount of home updates you NEED this Fall. 👀 {shop_link}",
+        "tags": {
+          "shop_link" : "shop.xyz",
+          "first_name" : "John",
+          "shop_name" : "Fly Fishin"
+        },
         "status": "Preview",
         "segment_id": 3,
         "media": "https://images.unsplash.com/photo-1568485248685-019a98426c14",
