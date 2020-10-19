@@ -21,15 +21,38 @@ const Edit = () => {
     const [shop_nameTag, setShop_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name)
     const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].segment_id && Data.campaigns[Params.id-1].segment_id)
 
+    
+    const handleTitleChange = (event) => {
+        setCampaignTitle(event.target.value);
+    }
     const handleSMSChange = (event) => {
         setSmsText(event.target.value);
+        updateDisplayText()
     }
-
     const handleMediaChange = (event) => {
         setMedia(event.target.value);
     }
+    const handleShopLinkTagChange = (event) => {
+        setShop_linkTag(event.target.value);
+        updateDisplayText()
+    }
+    const handleFirstNameTagChange = (event) => {
+        setFirst_nameTag(event.target.value);
+        updateDisplayText()
+    }
+    const handleShopNameTagChange = (event) => {
+        setShop_nameTag(event.target.value);
+        updateDisplayText()
+    }
     const saveCampaign = () => {
         console.log("Save")
+    }
+    const updateDisplayText = () => {
+        const old = smsText
+        let newTXT = old.replaceAll("{first_name}", first_nameTag)
+        newTXT = newTXT.replaceAll("{shop_name}", shop_nameTag)
+        newTXT = newTXT.replaceAll("{shop_link}", shop_linkTag)
+        setDisplayText(newTXT)
     }
     return (
         <div className={css(styles.container)}>
@@ -43,6 +66,7 @@ const Edit = () => {
                             <Table.Cell>
                                 <input className={css(styles.editTitle)}
                                     defaultValue={CampaignTitle}
+                                    onChange={handleTitleChange}
                                 />
                             </Table.Cell>
                         </Table.Row>
@@ -82,16 +106,19 @@ const Edit = () => {
                                             <input 
                                                 className={css(styles.editTag)} 
                                                 defaultValue={shop_linkTag}
+                                                onChange={handleShopLinkTagChange}
                                             />
                                         </Table.Cell>
                                         <Table.Cell>
                                         <input className={css(styles.editTag)}
                                                 defaultValue={first_nameTag}
+                                                onChange={handleFirstNameTagChange}
                                             />
                                         </Table.Cell>
                                         <Table.Cell>
                                         <input className={css(styles.editTag)}
                                                 defaultValue={shop_nameTag}
+                                                onChange={handleShopNameTagChange}
                                             />
                                         </Table.Cell>
                                     </Table.Row>
@@ -171,7 +198,7 @@ const Edit = () => {
                                 <div className="message-timestamp-left">SMS 13:37</div>
                             </div>
                             <div className="message-orange">
-                                <p className="message-content">{smsText}</p>
+                                <p className="message-content">{displayText}</p>
                                 <img src={media} alt="attachment" width="200px" height="200px" className={css(styles.smsAttachImg)}></img>
                                 <div className="message-timestamp-right">SMS 13:37</div>
                             </div>
@@ -206,7 +233,7 @@ const styles = StyleSheet.create({
         margin: '4px 2px 2px 4px'
     },
     editMediaLink:{
-        width: '300px',
+        width: '246px',
         height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
@@ -221,7 +248,7 @@ const styles = StyleSheet.create({
     },
     editSMS:{
         width: '360px',
-	    height: '60px',
+	    height: '100px',
 	    border: '3px solid #cccccc',
         padding: '5px',
         resize: 'none',
