@@ -13,13 +13,14 @@ const Edit = () => {
     const [CampaignId, setCampaignId] = useState(Params.id)
     const [CampaignTitle, setCampaignTitle] =useState(Data.campaigns[Params.id-1].name)
     const [smsText, setSmsText] = useState(Data.campaigns[Params.id-1].text)
+    const [displayText, setDisplayText] = useState(smsText)
     const [media, setMedia] = useState(Data.campaigns[Params.id-1].media)
     const [shop_linkTag, setShop_linkTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link)
     const [first_nameTag, setFirst_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name)
     const [shop_nameTag, setShop_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name)
     const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].segment_id && Data.campaigns[Params.id-1].segment_id)
 
-    const handleTxtChange = (event) => {
+    const handleSMSChange = (event) => {
         setSmsText(event.target.value);
     }
 
@@ -29,98 +30,133 @@ const Edit = () => {
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.editArea)}>
-                <h3>Campaign Title</h3>
-                <input className={css(styles.editTitle)}
-                    defaultValue={CampaignTitle}
-                />
-                <h3>Tags</h3>
-                <Table>
-                    <Table.Header>
-                        <Table.Row>
-                            <Table.Cell>
-                                <b>Short URL Link</b>
-                            </Table.Cell>
-                            <Table.Cell>
-                                <b>Customer Name</b>
-                            </Table.Cell>
-                            <Table.Cell>
-                                <b>Shop Title</b>
-                            </Table.Cell>
-                        </Table.Row>
-                        <Table.Row>
-                            <Table.Cell>
-                                <code>&#123;shop_link&#125;</code>
-                            </Table.Cell>
-                            <Table.Cell>
-                            <code>&#123;first_name&#125;</code>
-                            </Table.Cell>
-                            <Table.Cell>
-                            <code>&#123;shop_name&#125;</code>
-                            </Table.Cell>
-                        </Table.Row>
-                    </Table.Header>
-                    <Table.Body>
-                        <Table.Row>
-                            <Table.Cell>
-                                <input 
-                                    className={css(styles.editTag)} 
-                                    defaultValue={shop_linkTag}
-                                />
-                            </Table.Cell>
-                            <Table.Cell>
-                            <input className={css(styles.editTag)}
-                                    defaultValue={first_nameTag}
-                                />
-                            </Table.Cell>
-                            <Table.Cell>
-                            <input className={css(styles.editTag)}
-                                    defaultValue={shop_nameTag}
-                                />
-                            </Table.Cell>
-                        </Table.Row>
-                    </Table.Body>
-                </Table>
-                <h3>SMS</h3>
-                <textarea 
-                    className={css(styles.editSMS)}
-                    defaultValue={smsText}
-                    onChange={handleTxtChange}
-                />
-                <h3>Media</h3>
                 <Table>
                     <Table.Body>
                         <Table.Row>
                             <Table.Cell>
-                                <img src={media} alt="attachment" width="100px" height="100px" className={css(styles.editMediaImg)}></img>
+                                <b>Title</b>
                             </Table.Cell>
                             <Table.Cell>
-                                <input 
-                                    className={css(styles.editMediaLink)}
-                                    defaultValue={media}
-                                    onChange={handleMediaChange}
+                                <input className={css(styles.editTitle)}
+                                    defaultValue={CampaignTitle}
                                 />
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <b>Tags</b>
+                            </Table.Cell>
+                            <Table.Cell>
+                            <Table>
+                                <Table.Header>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            <b>Short URL Link</b>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <b>Customer Name</b>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <b>Shop Title</b>
+                                        </Table.Cell>
+                                    </Table.Row>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            <code>&#123;shop_link&#125;</code>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                        <code>&#123;first_name&#125;</code>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                        <code>&#123;shop_name&#125;</code>
+                                        </Table.Cell>
+                                    </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            <input 
+                                                className={css(styles.editTag)} 
+                                                defaultValue={shop_linkTag}
+                                            />
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                        <input className={css(styles.editTag)}
+                                                defaultValue={first_nameTag}
+                                            />
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                        <input className={css(styles.editTag)}
+                                                defaultValue={shop_nameTag}
+                                            />
+                                        </Table.Cell>
+                                    </Table.Row>
+                                </Table.Body>
+                            </Table>
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <b>SMS</b>
+                            </Table.Cell>
+                            <Table.Cell>
+                            <textarea 
+                                className={css(styles.editSMS)}
+                                defaultValue={smsText}
+                                onChange={handleSMSChange}
+                            />
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <b>Media</b>
+                            </Table.Cell>
+                            <Table.Cell>
+                            <Table>
+                                <Table.Body>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            <img src={media} alt="attachment" width="100px" height="100px" className={css(styles.editMediaImg)}></img>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <input 
+                                                className={css(styles.editMediaLink)}
+                                                defaultValue={media}
+                                                onChange={handleMediaChange}
+                                            />
+                                        </Table.Cell>
+                                    </Table.Row>
+                                </Table.Body>
+                            </Table>
+                            </Table.Cell>
+                        </Table.Row>
+                        <Table.Row>
+                            <Table.Cell>
+                                <b>Target</b>
+                            </Table.Cell>
+                            <Table.Cell>
+                                <select 
+                                    className={css(styles.editTargetSelect)}
+                                    //defaultValue={TargetSegmentId}
+                                >
+                                    {Data.segments.map(el => {
+                                        console.log("Target segment: "+ TargetSegmentId)
+                                        if (el.id === TargetSegmentId){
+                                            console.log("select target in menu")
+                                            return (<option key={el.id} selected>{el.name} ({el.subscribers_count})</option>)
+                                        }else{
+                                            return (<option key={el.id}>{el.name} ({el.subscribers_count})</option>)
+                                        }
+                                    })} 
+                                </select>
                             </Table.Cell>
                         </Table.Row>
                     </Table.Body>
                 </Table>
-                <h3>Target</h3>
-                <select 
-                    className={css(styles.editTargetSelect)}
-                    //defaultValue={TargetSegmentId}
-                >
-                {Data.segments.map(el => {
-                    console.log("Target segment: "+ TargetSegmentId)
-                    
-                    if (el.id === TargetSegmentId){
-                        console.log("select target in menu")
-                        return (<option key={el.id} selected>{el.name} ({el.subscribers_count})</option>)
-                    }else{
-                        return (<option key={el.id}>{el.name} ({el.subscribers_count})</option>)
-                    }
-                    
-                    
-                })} 
-                </select>
+
+
+
+                
                 <button>Save</button>
             </div>
             <div className={css(styles.livePreview)}>
@@ -158,7 +194,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#FFF',
     },
     editTitle:{
-        width: '442px',
+        width: '360px',
         height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
@@ -170,7 +206,8 @@ const styles = StyleSheet.create({
         height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
-        fontSize: '16px'
+        fontSize: '16px',
+        marginLeft: '4px',
     },
     editMediaImg:{
         border: '3px solid #cccccc',
@@ -179,7 +216,7 @@ const styles = StyleSheet.create({
         border: '0px solid #cccccc',
     },
     editSMS:{
-        width: '442px',
+        width: '360px',
 	    height: '60px',
 	    border: '3px solid #cccccc',
         padding: '5px',
