@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import DashContext from './dashContext.js'
 import {StyleSheet, css} from 'aphrodite/no-important'
 import { Dropdown, TableCell, TableHeader, TableRow } from 'semantic-ui-react'
@@ -21,7 +21,10 @@ const Edit = () => {
     const [shop_nameTag, setShop_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name)
     const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].segment_id && Data.campaigns[Params.id-1].segment_id)
 
-    
+    useEffect(() => {
+        updateDisplayText()
+    }, [])
+
     const handleTitleChange = (event) => {
         setCampaignTitle(event.target.value);
     }
@@ -48,10 +51,10 @@ const Edit = () => {
         console.log("Save")
     }
     const updateDisplayText = () => {
-        const old = smsText
-        let newTXT = old.replaceAll("{first_name}", first_nameTag)
-        newTXT = newTXT.replaceAll("{shop_name}", shop_nameTag)
-        newTXT = newTXT.replaceAll("{shop_link}", shop_linkTag)
+        let newTXT = smsText
+        if (first_nameTag) {newTXT = newTXT.replaceAll("{first_name}", first_nameTag)}
+        if (shop_nameTag) {newTXT = newTXT.replaceAll("{shop_name}", shop_nameTag)}
+        if (shop_linkTag) {newTXT = newTXT.replaceAll("{shop_link}", shop_linkTag)}
         setDisplayText(newTXT)
     }
     return (
