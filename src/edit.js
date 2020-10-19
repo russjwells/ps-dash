@@ -17,7 +17,7 @@ const Edit = () => {
     const [shop_linkTag, setShop_linkTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link)
     const [first_nameTag, setFirst_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name)
     const [shop_nameTag, setShop_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name)
-    const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.segment_id)
+    const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].segment_id && Data.campaigns[Params.id-1].segment_id)
 
     const handleTxtChange = (event) => {
         setSmsText(event.target.value);
@@ -106,14 +106,16 @@ const Edit = () => {
                 <h3>Target</h3>
                 <select 
                     className={css(styles.editTargetSelect)}
+                    //defaultValue={TargetSegmentId}
                 >
                 {Data.segments.map(el => {
                     console.log("Target segment: "+ TargetSegmentId)
-                    if (el == (Data.campaigns[Params.id-1].segment_id)){
+                    
+                    if (el.id === TargetSegmentId){
                         console.log("select target in menu")
-                        return (<option key={el.id} selected>{el.name}</option>)
+                        return (<option key={el.id} selected>{el.name} ({el.subscribers_count})</option>)
                     }else{
-                        return (<option key={el.id}>{el.name}</option>)
+                        return (<option key={el.id}>{el.name} ({el.subscribers_count})</option>)
                     }
                     
                     
@@ -160,7 +162,8 @@ const styles = StyleSheet.create({
         height: '30px',
         border: '3px solid #cccccc',
         padding: '5px',
-        fontSize: '16px'
+        fontSize: '16px',
+        margin: '4px 2px 2px 4px'
     },
     editMediaLink:{
         width: '300px',
@@ -180,19 +183,25 @@ const styles = StyleSheet.create({
 	    height: '60px',
 	    border: '3px solid #cccccc',
         padding: '5px',
-        resize: 'none'
+        resize: 'none',
+        margin: '4px 2px 2px 4px',
+        fontSize: '16px',
     },
     editTag:{
         height: '30px',
+        width: '100px',
         border: '3px solid #cccccc',
         padding: '5px',
-        fontSize: '16px'
+        fontSize: '16px',
+        margin: '4px 2px 2px 4px'
     },
     editTargetSelect:{
-        height: '30px',
+        height: '40px',
         width: '400px',
         border: '3px solid #cccccc',
         padding: '5px',
+        margin: '4px 2px 2px 4px',
+        fontSize: '16px',
     },
     livePreview:{
         display: 'flex',

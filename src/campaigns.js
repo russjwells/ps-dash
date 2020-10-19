@@ -4,7 +4,7 @@ import {StyleSheet, css} from 'aphrodite/no-important'
 import DashContext from './dashContext.js'
 import { Table } from "semantic-ui-react"
 import {Link} from 'react-router-dom'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import SwitchButton from './switchButton.js'
 import Sent from './sent.js'
 import Preview from './preview.js'
@@ -39,6 +39,9 @@ const Campaigns = () => {
                     </Route>
                     <Route path="/campaigns/new">
                         <New />
+                    </Route>
+                    <Route exact path="/campaigns">
+                        <Redirect to={"/campaigns/sent"} />
                     </Route>
                 </Switch>
                 
