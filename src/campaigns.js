@@ -20,7 +20,7 @@ const Campaigns = () => {
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
                 <SwitchButton leftLink="/campaigns/sent" rightLink="/campaigns/preview" leftLabel="Sent" rightLabel="Preview" />
-                <Link to="/campaigns/new" onClick={() => setPageState("New")} className={css(styles.link)}>
+                <Link to={"/campaigns/new"} onClick={() => setPageState("New")} className={css(styles.link)}>
                     <div className={css(styles.button)}>
                         <div className={css(styles.buttonText)}>New Campaign</div>
                     </div>

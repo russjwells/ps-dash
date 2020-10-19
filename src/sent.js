@@ -10,7 +10,7 @@ const Sent = () => {
                     <Table.HeaderCell>Campaign</Table.HeaderCell>
                     <Table.HeaderCell>SMS</Table.HeaderCell>
                     <Table.HeaderCell>Media</Table.HeaderCell>
-                    <Table.HeaderCell>#</Table.HeaderCell>
+                    <Table.HeaderCell># Sent</Table.HeaderCell>
                     <Table.HeaderCell>CTR</Table.HeaderCell>
                 </Table.Row>
             </Table.Header>

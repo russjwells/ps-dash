@@ -4,8 +4,9 @@ import {StyleSheet, css} from 'aphrodite/no-important'
 import { Dropdown, TableCell, TableHeader, TableRow } from 'semantic-ui-react'
 import './smartphone.scss'
 import './texting.scss'
-import {useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import { Table } from "semantic-ui-react"
+
 
 const Edit = () => {
     const Data = useContext(DashContext)
@@ -26,6 +27,9 @@ const Edit = () => {
 
     const handleMediaChange = (event) => {
         setMedia(event.target.value);
+    }
+    const saveCampaign = () => {
+        console.log("Save")
     }
     return (
         <div className={css(styles.container)}>
@@ -153,11 +157,11 @@ const Edit = () => {
                         </Table.Row>
                     </Table.Body>
                 </Table>
-
-
-
-                
-                <button>Save</button>
+                <Link to="/campaigns/preview" onClick={() => saveCampaign()} className={css(styles.link)}>
+                <div className={css(styles.button)}>
+                    <div className={css(styles.buttonText)}>Save Campaign</div>
+                </div>
+                </Link>
             </div>
             <div className={css(styles.livePreview)}>
                 <div className="smartphone">
