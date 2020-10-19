@@ -113,15 +113,15 @@ const Edit = () => {
                                             />
                                         </Table.Cell>
                                         <Table.Cell>
-                                        <input className={css(styles.editTag)}
-                                                defaultValue={first_nameTag}
-                                                onChange={handleFirstNameTagChange}
+                                            <input className={css(styles.editTag)}
+                                                    defaultValue={first_nameTag}
+                                                    onChange={handleFirstNameTagChange}
                                             />
                                         </Table.Cell>
                                         <Table.Cell>
-                                        <input className={css(styles.editTag)}
-                                                defaultValue={shop_nameTag}
-                                                onChange={handleShopNameTagChange}
+                                            <input className={css(styles.editTag)}
+                                                    defaultValue={shop_nameTag}
+                                                    onChange={handleShopNameTagChange}
                                             />
                                         </Table.Cell>
                                     </Table.Row>
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
     },
     editTargetSelect:{
         height: '40px',
-        width: '400px',
+        width: '380px',
         border: '3px solid #cccccc',
         padding: '5px',
         margin: '4px 2px 2px 4px',
