@@ -20,13 +20,13 @@ const Preview = () => {
                     if (el.status === 'Preview'){
                         return (
                         <Table.Row key={el.id}>
-                            <Table.Cell style={{width: '20%'}}>{el.name}</Table.Cell>
+                            <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
                             <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
                             <Table.Cell style={{width: '40px'}}>
                                 {el.media && <img src={el.media} width="50px" height="50px" />}
                             </Table.Cell>
-                            <Table.Cell style={{width: '40px'}}>{Data.segments[el.segment_id-1] && Data.segments[el.segment_id-1].name}</Table.Cell>
-                            <Table.Cell style={{width: '40px'}}><Link to={`/campaigns/edit/${el.id}`}>Edit</Link></Table.Cell>
+                            <Table.Cell style={{width: '40px', textAlign: 'center'}}>{Data.segments[el.segment_id-1] && Data.segments[el.segment_id-1].name}</Table.Cell>
+                            <Table.Cell style={{width: '40px', textAlign: 'center'}}><Link to={`/campaigns/edit/${el.id}`}>Edit</Link></Table.Cell>
                         </Table.Row>
                         )
                     }
