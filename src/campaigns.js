@@ -14,7 +14,7 @@ import New from './new.js'
 
 const Campaigns = () => {
     const [pageState, setPageState] = useState("Sent")
-    const CampaignData = useContext(DashContext)
+    const Data = useContext(DashContext)
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>

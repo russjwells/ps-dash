@@ -6,6 +6,7 @@ import './smartphone.scss'
 import './texting.scss'
 import {Link, useParams} from 'react-router-dom'
 import { Table } from "semantic-ui-react"
+import './useLocalStorage.js'
 
 
 const Edit = () => {
@@ -174,9 +175,9 @@ const Edit = () => {
                                     //defaultValue={TargetSegmentId}
                                 >
                                     {Data.segments.map(el => {
-                                        console.log("Target segment: "+ TargetSegmentId)
+                                        //console.log("Target segment: "+ TargetSegmentId)
                                         if (el.id === TargetSegmentId){
-                                            console.log("select target in menu")
+                                            //console.log("select target in menu")
                                             return (<option key={el.id} selected>{el.name} ({el.subscribers_count})</option>)
                                         }else{
                                             return (<option key={el.id}>{el.name} ({el.subscribers_count})</option>)
@@ -388,33 +389,10 @@ const styles = StyleSheet.create({
             color: 'white',
         }
     },
-    sidemenu: {
-        display:'flex',
-        flex: 0,
-        backgroundColor: '#0f0d1f',
-        color: '#d3d0ec',
-        minWidth: '200px',
-        maxWidth: '20%',
-        flexDirection: "column"
-    },
-    smenuitem: {
-        padding: '10px 10px'
-    },
     content: {
         display:'flex',
         flex: 1,
         backgroundColor: 'light-yellow',
         padding: '20px',
-    },
-    header: {
-        display:'flex'
-    },
-    main: {
-        display:'flex',
-        flex: 1,
-    },
-    footer: {
-        display:'flex',
-        backgroundColor: '#0f0d08'
     }
 })

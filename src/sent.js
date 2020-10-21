@@ -21,11 +21,11 @@ const Sent = () => {
                             <Table.Row key={el.id}>
                                 <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
                                 <Table.Cell style={{width: '20%'}}><code>{el.text}</code></Table.Cell>
-                                <Table.Cell style={{width: '40px'}}>
-                                    {el.media && <img src={el.media} alt="smsPic" width="50px" height="50px" />}
+                                <Table.Cell>
+                                    {el.media && <div><img src={el.media} alt="smsPic" width="50px" height="50px" /></div>}
                                 </Table.Cell>
                                 
-                                <Table.Cell style={{width: '40px', textAlign: 'center'}}>
+                                <Table.Cell style={{ textAlign: 'center'}}>
                                     {el.stats && el.stats.sent}
                                 </Table.Cell>
                                 <Table.Cell style={{width: '40px', textAlign: 'center'}}>
