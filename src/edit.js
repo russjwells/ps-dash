@@ -13,7 +13,7 @@ const Edit = () => {
     const Data = useContext(DashContext)
     let Params = useParams()
     const [CampaignId, setCampaignId] = useState(Params.id)
-    const [CampaignTitle, setCampaignTitle] =useState(Data.campaigns[Params.id-1].name)
+    const [CampaignTitle, setCampaignTitle] = useState(Data.campaigns[Params.id-1].name)
     const [smsText, setSmsText] = useState(Data.campaigns[Params.id-1].text)
     const [displayText, setDisplayText] = useState(smsText)
     const [media, setMedia] = useState(Data.campaigns[Params.id-1].media)
@@ -24,6 +24,9 @@ const Edit = () => {
 
     useEffect(() => {
         updateDisplayText()
+
+        //write data to local state
+        console.log(window.localStorage.length)
     }, [])
 
     const handleTitleChange = (event) => {
@@ -50,6 +53,8 @@ const Edit = () => {
     }
     const saveCampaign = () => {
         console.log("Save")
+        localStorage.setItem('Campaigns', Data.campaigns[Params.id-1].name)
+        localStorage.setItem('Campaigns', Data.campaigns[Params.id-1].text)
     }
     const updateDisplayText = () => {
         let newTXT = smsText
