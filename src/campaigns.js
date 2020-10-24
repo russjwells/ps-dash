@@ -4,7 +4,7 @@ import {StyleSheet, css} from 'aphrodite/no-important'
 import DashContext from './dashContext.js'
 import { Table } from "semantic-ui-react"
 import {Link} from 'react-router-dom'
-import {Switch, Route, Redirect} from 'react-router-dom'
+import {Switch, Route, Redirect, useHistory} from 'react-router-dom'
 import SwitchButton from './switchButton.js'
 import Sent from './sent.js'
 import Preview from './preview.js'
@@ -13,6 +13,7 @@ import New from './new.js'
 
 
 const Campaigns = () => {
+    let history = useHistory()
     const [pageState, setPageState] = useState("Sent")
     const { campaigns, setCampaigns } = useContext(DashContext)
     const createCampaign = () => {
@@ -35,7 +36,7 @@ const Campaigns = () => {
         const NewCampaigns = campaigns.slice()
         NewCampaigns.push(NewCampaign)
         setCampaigns(NewCampaigns)
-
+        history.push("/campaigns/edit/"+(campaigns.length+1))
     }
     return (
         <div className={css(styles.container)}>
