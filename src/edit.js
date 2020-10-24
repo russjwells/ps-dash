@@ -51,6 +51,10 @@ const Edit = () => {
         setShop_nameTag(event.target.value);
         updateDisplayText()
     }
+    const handleTargetSegmentSelect = (event) => {
+        //console.log(event.target.selectedIndex+1)
+        setTargetSegmentId(event.target.selectedIndex+1)
+    }
     const saveCampaign = () => {
         console.log("Save")
         const CampaignEdit = {
@@ -89,7 +93,7 @@ const Edit = () => {
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.editArea)}>
-                <Table>
+                <Table className={css(styles.editTable)}>
                     <Table.Body>
                         <Table.Row>
                             <Table.Cell>
@@ -201,6 +205,7 @@ const Edit = () => {
                                 <select 
                                     className={css(styles.editTargetSelect)}
                                     //defaultValue={TargetSegmentId}
+                                    onChange={handleTargetSegmentSelect}
                                 >
                                     {segments.map(el => {
                                         //console.log("Target segment: "+ TargetSegmentId)
@@ -217,7 +222,7 @@ const Edit = () => {
                     </Table.Body>
                 </Table>
                 <Link to="/campaigns/preview" onClick={() => saveCampaign()} className={css(styles.link)}>
-                <div className={css(styles.button)}>
+                <div className={css(styles.editButton)}>
                     <div className={css(styles.buttonText)}>Save Campaign</div>
                 </div>
                 </Link>
@@ -303,6 +308,26 @@ const styles = StyleSheet.create({
         margin: '4px 2px 2px 4px',
         fontSize: '16px',
     },
+    editTable: {
+        margin: 'auto',
+        marginTop: '60px',
+    },
+    editButton:{
+        margin: 'auto',
+        marginTop: '30px',
+        cursor: 'pointer',
+        textAlign: 'center',
+        backgroundColor: '#742FCC',
+        display:'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        width: '160px',
+        height: '50px',
+        borderRadius: '20px',
+        ':hover': {
+            backgroundColor: '#8942E3'
+        }
+    },
     livePreview:{
         display: 'flex',
         flex: 1,
@@ -337,63 +362,7 @@ const styles = StyleSheet.create({
         textDecoration: 'none',
         color: '#fff'
     },
-    lbutton: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#742FCC',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderRadius: '20px 0px 0px 20px',
-        ':hover': {
-            backgroundColor: '#8942E3'
-        }
-    },
-    lbuttonoff: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#333',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderColor: '#742FCC',
-        borderRadius: '20px 0px 0px 20px',
-        ':hover': {
-            backgroundColor: '#444'
-        }
-    },
-    rbutton: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#742FCC',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderRadius: '0px 20px 20px 0px',
-        ':hover': {
-            backgroundColor: '#8942E3'
-        }
-    },
-    rbuttonoff: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#333',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderRadius: '0px 20px 20px 0px',
-        ':hover': {
-            backgroundColor: '#444'
-        }
-    },
+    
     button: {
         cursor: 'pointer',
         textAlign: 'center',
