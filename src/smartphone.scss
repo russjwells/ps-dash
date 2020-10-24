@@ -1,13 +1,13 @@
 /* The device with borders */
 .smartphone {
     position: relative;
-    width: 320px;
-    height: 560px;
+    width: 280px;
+    height: 450px;
     margin: auto;
     border: 16px black solid;
-    border-top-width: 60px;
-    border-bottom-width: 60px;
-    border-radius: 36px;
+    border-top-width: 30px;
+    border-bottom-width: 30px;
+    border-radius: 28px;
   }
   
   /* The horizontal line on the top of the device */
@@ -17,7 +17,7 @@
     width: 60px;
     height: 5px;
     position: absolute;
-    top: -30px;
+    top: -15px;
     left: 50%;
     transform: translate(-50%, -50%);
     background: #333;
@@ -42,8 +42,9 @@
   
   /* The screen (or content) of the device */
   .smartphone .content {
-    width: 320px;
-    height: 560px;
+    width: 280px;
+    height: 450px;
     background: rgb(255, 255, 255);
     padding-top: 10px;
+    border-radius: 5px;
   }
