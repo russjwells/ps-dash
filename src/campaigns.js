@@ -14,8 +14,6 @@ import New from './new.js'
 
 const Campaigns = () => {
     const [pageState, setPageState] = useState("Sent")
-    const Data = useContext(DashContext)
-    const [Campaigns, setCampaigns] = useState(Data.campaigns)
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
@@ -45,8 +43,6 @@ const Campaigns = () => {
                         <Redirect to={"/campaigns/sent"} />
                     </Route>
                 </Switch>
-                
-                
             </div>
         </div>
 )

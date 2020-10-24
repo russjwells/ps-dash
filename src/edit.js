@@ -10,7 +10,7 @@ import './useLocalStorage.js'
 
 
 const Edit = () => {
-    const {campaigns, setCampaign, segments, setSegment} = useContext(DashContext)
+    const {campaigns, setCampaigns, segments, setSegments} = useContext(DashContext)
     let Params = useParams()
     const [CampaignId, setCampaignId] = useState(Params.id)
     const [CampaignTitle, setCampaignTitle] = useState(campaigns[Params.id-1].name)
@@ -53,7 +53,24 @@ const Edit = () => {
     }
     const saveCampaign = (id) => {
         console.log("Save")
-        
+        const CampaignEdit = {
+            "id": id,
+            "name": CampaignTitle,
+            "text": smsText,
+            "tags": {
+                "shop_link" : shop_linkTag,
+                "first_name" : first_nameTag,
+                "shop_name" : shop_nameTag
+              },
+              "status": "Preview",
+              "segment_id": TargetSegmentId,
+              "media": media,
+              "stats": null
+            }
+        const index=id-1   
+        const newCampaigns = [...campaigns]
+        newCampaigns[index] = CampaignEdit
+        setCampaigns(newCampaigns)
         //array
         //setCampaign(...campaigns, campaigns[id].CampaignTitle("CampaignTitle:", CampaignTitle)
         //console.log(campaigns[Params.id-1])

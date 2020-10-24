@@ -20,8 +20,8 @@ import { useContext } from 'react';
 function Index() {
   const [isDataLoaded, setIsDataLoaded] = useState(false)
   const [dashData, setDashData] = useState(SampleData)
-  const [campaigns, setCampaign] = useState(SampleData.campaigns)
-  const [segments, setSegment] = useState(SampleData.segments)
+  const [campaigns, setCampaigns] = useState(SampleData.campaigns)
+  const [segments, setSegments] = useState(SampleData.segments)
   //const data = SampleData
   //console.log(JSON.stringify(data))
 
@@ -31,7 +31,7 @@ function Index() {
 
   return (
       <>
-          <DashContext.Provider value={{campaigns, setCampaign, segments, setSegment}}>
+          <DashContext.Provider value={{campaigns, setCampaigns, segments, setSegments}}>
               <App/>
           </DashContext.Provider>
       </>
