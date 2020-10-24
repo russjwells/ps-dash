@@ -10,17 +10,17 @@ import './useLocalStorage.js'
 
 
 const Edit = () => {
-    const Data = useContext(DashContext)
+    const {campaigns, setCampaign, segments, setSegment} = useContext(DashContext)
     let Params = useParams()
     const [CampaignId, setCampaignId] = useState(Params.id)
-    const [CampaignTitle, setCampaignTitle] = useState(Data.campaigns[Params.id-1].name)
-    const [smsText, setSmsText] = useState(Data.campaigns[Params.id-1].text)
+    const [CampaignTitle, setCampaignTitle] = useState(campaigns[Params.id-1].name)
+    const [smsText, setSmsText] = useState(campaigns[Params.id-1].text)
     const [displayText, setDisplayText] = useState(smsText)
-    const [media, setMedia] = useState(Data.campaigns[Params.id-1].media)
-    const [shop_linkTag, setShop_linkTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_link)
-    const [first_nameTag, setFirst_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.first_name)
-    const [shop_nameTag, setShop_nameTag] = useState(Data.campaigns[Params.id-1].tags && Data.campaigns[Params.id-1].tags.shop_name)
-    const [TargetSegmentId, setTargetSegmentId] = useState(Data.campaigns[Params.id-1].segment_id && Data.campaigns[Params.id-1].segment_id)
+    const [media, setMedia] = useState(campaigns[Params.id-1].media)
+    const [shop_linkTag, setShop_linkTag] = useState(campaigns[Params.id-1].tags && campaigns[Params.id-1].tags.shop_link)
+    const [first_nameTag, setFirst_nameTag] = useState(campaigns[Params.id-1].tags && campaigns[Params.id-1].tags.first_name)
+    const [shop_nameTag, setShop_nameTag] = useState(campaigns[Params.id-1].tags && campaigns[Params.id-1].tags.shop_name)
+    const [TargetSegmentId, setTargetSegmentId] = useState(campaigns[Params.id-1].segment_id && campaigns[Params.id-1].segment_id)
 
     useEffect(() => {
         updateDisplayText()
@@ -51,10 +51,15 @@ const Edit = () => {
         setShop_nameTag(event.target.value);
         updateDisplayText()
     }
-    const saveCampaign = () => {
+    const saveCampaign = (id) => {
         console.log("Save")
-        localStorage.setItem('Campaigns', Data.campaigns[Params.id-1].name)
-        localStorage.setItem('Campaigns', Data.campaigns[Params.id-1].text)
+        
+        //array
+        //setCampaign(...campaigns, campaigns[id].CampaignTitle("CampaignTitle:", CampaignTitle)
+        //console.log(campaigns[Params.id-1])
+        //local storage
+        //localStorage.setItem('Campaigns', campaigns[Params.id-1].name)
+        //localStorage.setItem('Campaigns', campaigns[Params.id-1].text)
     }
     const updateDisplayText = () => {
         let newTXT = smsText
@@ -179,7 +184,7 @@ const Edit = () => {
                                     className={css(styles.editTargetSelect)}
                                     //defaultValue={TargetSegmentId}
                                 >
-                                    {Data.segments.map(el => {
+                                    {segments.map(el => {
                                         //console.log("Target segment: "+ TargetSegmentId)
                                         if (el.id === TargetSegmentId){
                                             //console.log("select target in menu")
@@ -193,7 +198,7 @@ const Edit = () => {
                         </Table.Row>
                     </Table.Body>
                 </Table>
-                <Link to="/campaigns/preview" onClick={() => saveCampaign()} className={css(styles.link)}>
+                <Link to="/campaigns/preview" onClick={() => saveCampaign(Params.id-1)} className={css(styles.link)}>
                 <div className={css(styles.button)}>
                     <div className={css(styles.buttonText)}>Save Campaign</div>
                 </div>

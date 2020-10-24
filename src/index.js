@@ -8,18 +8,30 @@ import SampleData from './data/campaigns.json'
 import { useContext } from 'react';
 //console.log(SampleData.campaigns[0].name)
 
-
+// next steps
 //
+// pass data modifier object
+//
+// load data from local state with useEffect
+//
+// set flag
 
 
 function Index() {
   const [isDataLoaded, setIsDataLoaded] = useState(false)
   const [dashData, setDashData] = useState(SampleData)
+  const [campaigns, setCampaign] = useState(SampleData.campaigns)
+  const [segments, setSegment] = useState(SampleData.segments)
   //const data = SampleData
   //console.log(JSON.stringify(data))
+
+  useEffect(() => {
+  
+  }, [])
+
   return (
       <>
-          <DashContext.Provider value={dashData}>
+          <DashContext.Provider value={{campaigns, setCampaign, segments, setSegment}}>
               <App/>
           </DashContext.Provider>
       </>
@@ -28,6 +40,7 @@ function Index() {
 }
 
 export default Index
+
 
 
 ReactDOM.render(
