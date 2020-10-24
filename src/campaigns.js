@@ -14,12 +14,35 @@ import New from './new.js'
 
 const Campaigns = () => {
     const [pageState, setPageState] = useState("Sent")
+    const { campaigns, setCampaigns } = useContext(DashContext)
+    const createCampaign = () => {
+        setPageState("New")
+        const NewCampaign = {
+            "id": campaigns.length+1,
+            "name": "New Campaign",
+            "text": "",
+            "tags": {
+                "shop_link" : "http://",
+                "first_name" : "",
+                "shop_name" : ""
+              },
+              "status": "Preview",
+              "segment_id": 1,
+              "media": null,
+              "stats": null
+            }
+        
+        const NewCampaigns = campaigns.slice()
+        NewCampaigns.push(NewCampaign)
+        setCampaigns(NewCampaigns)
+
+    }
     return (
         <div className={css(styles.container)}>
             <div className={css(styles.titlerow)}>
                 <div className={css(styles.title)}>Campaigns</div>
                 <SwitchButton leftLink="/campaigns/sent" rightLink="/campaigns/preview" leftLabel="Sent" rightLabel="Preview" />
-                <Link to={"/campaigns/new"} onClick={() => setPageState("New")} className={css(styles.link)}>
+                <Link to={"#"} onClick={createCampaign} className={css(styles.link)}>
                     <div className={css(styles.button)}>
                         <div className={css(styles.buttonText)}>New Campaign</div>
                     </div>
