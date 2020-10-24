@@ -51,10 +51,10 @@ const Edit = () => {
         setShop_nameTag(event.target.value);
         updateDisplayText()
     }
-    const saveCampaign = (id) => {
+    const saveCampaign = () => {
         console.log("Save")
         const CampaignEdit = {
-            "id": id,
+            "id": CampaignId,
             "name": CampaignTitle,
             "text": smsText,
             "tags": {
@@ -67,10 +67,11 @@ const Edit = () => {
               "media": media,
               "stats": null
             }
-        const index=id-1   
+           
         const newCampaigns = [...campaigns]
-        newCampaigns[index] = CampaignEdit
+        newCampaigns[CampaignId-1] = CampaignEdit
         setCampaigns(newCampaigns)
+        console.log(newCampaigns)
         //array
         //setCampaign(...campaigns, campaigns[id].CampaignTitle("CampaignTitle:", CampaignTitle)
         //console.log(campaigns[Params.id-1])
@@ -215,7 +216,7 @@ const Edit = () => {
                         </Table.Row>
                     </Table.Body>
                 </Table>
-                <Link to="/campaigns/preview" onClick={() => saveCampaign(Params.id-1)} className={css(styles.link)}>
+                <Link to="/campaigns/preview" onClick={() => saveCampaign()} className={css(styles.link)}>
                 <div className={css(styles.button)}>
                     <div className={css(styles.buttonText)}>Save Campaign</div>
                 </div>
