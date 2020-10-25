@@ -1,7 +1,9 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import DashContext from './dashContext.js'
 
 const LaunchPadItem = (props) => {
+
+    const [minimized, setMinimized] = useState(false)
 
     const Data = useContext(DashContext)
     const el = props.el
@@ -12,6 +14,7 @@ const LaunchPadItem = (props) => {
                 <div>🚀 {el.name}</div>
                 <div>Sent: {el.stats && el.stats.sent}</div>
                 <div>Clicked: {el.stats && el.stats.clicked}</div>
+                <div>Ratio: {el.stats && (el.stats.clicked/el.stats.sent).toFixed(4)*100 + "%"}</div>
             </div>
         </div>
     )
