@@ -10,7 +10,8 @@
         "stats": {
           "sent": 6506,
           "clicked": 6137
-        }
+        },
+        "watch": false 
       },
       {
         "id": 2,
@@ -27,7 +28,8 @@
         "stats": {
           "sent": 7228,
           "clicked": 6883
-        }
+        },
+        "watch": false 
       },
       {
         "id": 3,
@@ -39,7 +41,8 @@
         "stats": {
           "sent": 7246,
           "clicked": 7080
-        }
+        },
+        "watch": false 
       },
       {
         "id": 4,
@@ -53,7 +56,8 @@
         "status": "Preview",
         "segment_id": 3,
         "media": "https://images.unsplash.com/photo-1568485248685-019a98426c14",
-        "stats": null
+        "stats": null,
+        "watch": false 
       },
       {
         "id": 5,
@@ -62,7 +66,8 @@
         "status": "Preview",
         "segment_id": 1,
         "media": "https://images.unsplash.com/photo-1537800534001-f3e01aa1c34c",
-        "stats": null
+        "stats": null,
+        "watch": false 
       }
     ],
     "segments": [

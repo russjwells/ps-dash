@@ -1,10 +1,29 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
+import DashContext from './dashContext.js'
 
 const Footer = () => {
-
-    return <div style={{backgroundColor: 'black', color: 'white', fontWeight: 'bold', padding:'10px', textAlign:"end"}}>Happy Sending ✉️💨</div>
+    const Data = useContext(DashContext)
+    return (
+        <div style={{backgroundColor: 'black', color: 'white', fontWeight: 'bold', padding:'10px', flexDirection: "row", display: "flex", justifyContent: 'space-between'}}>
+            <div >
+            🚀 Launch Pad 
+            </div>
+            <div>
+            {Data.campaigns.map(el => {
+                    if (el.watch === true){
+                        return (
+                            <div style={{width: '120px', height: '30px', textAlign: 'left', overflow:'hidden', backgroundColor: '#222', cursor: 'pointer'}}>{el.name.substr(0, el.name.indexOf(" "))}</div>
+                        )
+                    }
+                })}
+            </div>
+            <div style={{textAlign:"end"}}>
+            Happy Sending ✉️💨
+            </div>
+        </div>
+    )
 
 }
 

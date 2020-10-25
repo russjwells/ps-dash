@@ -5,10 +5,15 @@ import {Link} from 'react-router-dom'
 import {StyleSheet, css} from 'aphrodite/no-important'
 const Preview = () => {
     const Data = useContext(DashContext)
+    const toggleWatch = (id) => {
+        console.log("watch clicked")
+        console.log("toggle watch:" + id)
+    }
     return (
             <Table singleLine className={css(styles.editTable)}>
                 <Table.Header>
                     <Table.Row>
+                        <Table.HeaderCell> </Table.HeaderCell>
                         <Table.HeaderCell>Campaign</Table.HeaderCell>
                         <Table.HeaderCell>SMS</Table.HeaderCell>
                         <Table.HeaderCell >Media</Table.HeaderCell>
@@ -21,6 +26,14 @@ const Preview = () => {
                     if (el.status === 'Preview'){
                         return (
                         <Table.Row key={el.id} style={{height: '80px'}}>
+                            <Table.Cell style={{width: '30px', textAlign: 'center'}}>
+                                <Link to={"#"} 
+                                    onClick={toggleWatch(el.id)} 
+                                    style={{cursor: 'pointer'}}
+                                >
+                                    {el.watch && "🔎" || "📨"}
+                                </Link>
+                            </Table.Cell>
                             <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
                             <Table.Cell style={{width: '40%'}}><code>{el.text}</code></Table.Cell>
                             <Table.Cell style={{width: '40px'}}>

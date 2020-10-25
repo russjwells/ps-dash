@@ -8,6 +8,7 @@ const Sent = () => {
         <Table className={css(styles.editTable)}>
             <Table.Header>
                 <Table.Row>
+                    <Table.HeaderCell> </Table.HeaderCell>
                     <Table.HeaderCell>Campaign</Table.HeaderCell>
                     <Table.HeaderCell>SMS</Table.HeaderCell>
                     <Table.HeaderCell>Media</Table.HeaderCell>
@@ -20,6 +21,7 @@ const Sent = () => {
                     if (el.status === 'Sent'){
                         return (
                             <Table.Row key={el.id} style={{height: '80px'}}>
+                            <Table.Cell style={{width: '30px', textAlign: 'center'}}>{el.watch && <>🔎</> || <>🚀</>}</Table.Cell>
                                 <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
                                 <Table.Cell style={{width: '40%'}}><code>{el.text}</code></Table.Cell>
                                 <Table.Cell>

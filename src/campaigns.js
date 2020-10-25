@@ -20,16 +20,16 @@ const Campaigns = () => {
         setPageState("New")
         const NewCampaign = {
             "id": campaigns.length+1,
-            "name": "New Campaign",
-            "text": "",
+            "name": "New SMS Campaign",
+            "text": "Hello {first_name}, please enjoy crafting your messages with {shop_name}.",
             "tags": {
-                "shop_link" : "http://",
-                "first_name" : "",
-                "shop_name" : ""
+                "shop_link" : "https://postscript.io",
+                "first_name" : "Posty",
+                "shop_name" : "Postscript"
               },
               "status": "Preview",
               "segment_id": 1,
-              "media": null,
+              "media": "https://publoft.com/assets/img/logo-postscript.png",
               "stats": null
             }
         
@@ -206,6 +206,8 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'light-yellow',
         padding: '20px',
+        overflow: 'scroll',
+        alignContent: 'start'
     },
     header: {
         display:'flex'
