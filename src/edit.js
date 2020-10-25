@@ -6,7 +6,6 @@ import './smartphone.scss'
 import './texting.scss'
 import {Link, useParams} from 'react-router-dom'
 import { Table } from "semantic-ui-react"
-import './useLocalStorage.js'
 
 
 const Edit = () => {

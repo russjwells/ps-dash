@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
     main: {
         display:'flex',
         flex: 1,
+        overflowY: 'scroll'
     },
     footer: {
         display:'flex',
