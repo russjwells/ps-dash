@@ -2,8 +2,13 @@ import React, {useContext} from 'react'
 import { Table } from "semantic-ui-react"
 import DashContext from './dashContext.js'
 import {StyleSheet, css} from 'aphrodite/no-important'
+import Toggle from 'react-toggle'
+import './reacttoggle.css'
 const Sent = () => {
     const Data = useContext(DashContext)
+    const toggleWatch = () => {
+
+    }
     return (
         <Table className={css(styles.editTable)}>
             <Table.Header>
@@ -21,7 +26,16 @@ const Sent = () => {
                     if (el.status === 'Sent'){
                         return (
                             <Table.Row key={el.id} style={{height: '80px'}}>
-                            <Table.Cell style={{width: '30px', textAlign: 'center'}}>{el.watch && <>🔎</> || <>🚀</>}</Table.Cell>
+                                <Table.Cell style={{width: '30px', textAlign: 'center'}}>
+                                <Toggle
+                                    defaultChecked={el.watch===true}
+                                    icons={{
+                                        checked: <span style={{fontSize:'10px'}}>🔎</span>, 
+                                        unchecked: <span style={{fontSize:'10px'}}>🚀</span>,
+                                    }}
+                                    onChange={toggleWatch} 
+                                />
+                                </Table.Cell>
                                 <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
                                 <Table.Cell style={{width: '40%'}}><code>{el.text}</code></Table.Cell>
                                 <Table.Cell>

@@ -3,9 +3,11 @@ import { Table } from "semantic-ui-react"
 import DashContext from './dashContext.js'
 import {Link} from 'react-router-dom'
 import {StyleSheet, css} from 'aphrodite/no-important'
+import Toggle from 'react-toggle'
+import './reacttoggle.css'
 const Preview = () => {
     const Data = useContext(DashContext)
-    const toggleWatch = (id) => {
+    function toggleWatch (id) {
         console.log("watch clicked")
         console.log("toggle watch:" + id)
     }
@@ -27,12 +29,14 @@ const Preview = () => {
                         return (
                         <Table.Row key={el.id} style={{height: '80px'}}>
                             <Table.Cell style={{width: '30px', textAlign: 'center'}}>
-                                <Link to={"#"} 
-                                    onClick={toggleWatch(el.id)} 
-                                    style={{cursor: 'pointer'}}
-                                >
-                                    {el.watch && "🔎" || "📨"}
-                                </Link>
+                                <Toggle
+                                    defaultChecked={el.watch===true}
+                                    icons={{
+                                        checked: <span style={{fontSize:'10px'}}>🔎</span>, 
+                                        unchecked: <span style={{fontSize:'10px'}}>📨</span>,
+                                    }}
+                                    onChange={toggleWatch} 
+                                />
                             </Table.Cell>
                             <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
                             <Table.Cell style={{width: '40%'}}><code>{el.text}</code></Table.Cell>
