@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     },
     editTable: {
         margin: 'auto',
-        marginTop: '60px',
+        marginTop: '10px',
     },
     editButton:{
         margin: 'auto',

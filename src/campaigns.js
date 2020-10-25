@@ -178,7 +178,8 @@ const styles = StyleSheet.create({
         borderRadius: '20px',
         ':hover': {
             backgroundColor: '#8942E3'
-        }
+        },
+        marginRight: '20px',
     },
     buttonText: {
         color: 'white'
