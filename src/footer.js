@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
-import ReactDOM from 'react-dom'
 import {StyleSheet, css} from 'aphrodite'
 import DashContext from './dashContext.js'
+import LaunchPad from './launchPad.js'
 
 const Footer = () => {
     const Data = useContext(DashContext)
@@ -10,20 +10,7 @@ const Footer = () => {
             <div >
             🚀 Launch Pad 
             </div>
-            <div>
-            {Data.campaigns.map(el => {
-                    if (el.watch === true){
-                        return (
-                            <div style={{width: '120px', height: '30px', textAlign: 'left', overflow:'visible', backgroundColor: '#222', cursor: 'pointer', textAlign: 'center'}}>
-                                🚀 {el.name.substr(0, el.name.indexOf(" "))} 
-                                <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'200px', backgroundColor: '#222', color:'#FFF'}}>
-                                    content
-                                </div>
-                            </div>
-                        )
-                    }
-                })}
-            </div>
+            <LaunchPad />
             <div style={{textAlign:"end"}}>
             Happy Sending ✉️💨
             </div>
