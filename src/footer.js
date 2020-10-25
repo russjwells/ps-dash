@@ -14,7 +14,12 @@ const Footer = () => {
             {Data.campaigns.map(el => {
                     if (el.watch === true){
                         return (
-                            <div style={{width: '120px', height: '30px', textAlign: 'left', overflow:'hidden', backgroundColor: '#222', cursor: 'pointer'}}>{el.name.substr(0, el.name.indexOf(" "))}</div>
+                            <div style={{width: '120px', height: '30px', textAlign: 'left', overflow:'visible', backgroundColor: '#222', cursor: 'pointer', textAlign: 'center'}}>
+                                🚀 {el.name.substr(0, el.name.indexOf(" "))} 
+                                <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'200px', backgroundColor: '#222', color:'#FFF'}}>
+                                    content
+                                </div>
+                            </div>
                         )
                     }
                 })}
