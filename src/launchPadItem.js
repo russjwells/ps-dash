@@ -12,9 +12,12 @@ const LaunchPadItem = (props) => {
             🚀 {el.name.substr(0, el.name.indexOf(" "))} 
             <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'200px', backgroundColor: '#222', color:'#FFF', display: 'flex', flexDirection: 'column', justifyContent:'space-around'}}>
                 <div>🚀 {el.name}</div>
-                <div>Sent: {el.stats && el.stats.sent}</div>
-                <div>Clicked: {el.stats && el.stats.clicked}</div>
-                <div>Ratio: {el.stats && (el.stats.clicked/el.stats.sent).toFixed(4)*100 + "%"}</div>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', fontSize: '16pt'}}>
+                    <div style={{fontSize: '16pt', color: 'lightblue'}}>Sent: {el.stats && el.stats.sent}</div>
+                    <div style={{fontSize: '16pt', color: 'lightgreen'}}>Clicked: {el.stats && el.stats.clicked}</div>
+                </div>
+                
+                <div style={{color :'lightcoral'}}>CTR: {el.stats && (el.stats.clicked/el.stats.sent).toFixed(4)*100 + "%"}</div>
             </div>
         </div>
     )
