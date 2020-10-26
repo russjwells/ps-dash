@@ -109,63 +109,6 @@ const styles = StyleSheet.create({
         textDecoration: 'none',
         color: '#fff'
     },
-    lbutton: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#742FCC',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderRadius: '20px 0px 0px 20px',
-        ':hover': {
-            backgroundColor: '#8942E3'
-        }
-    },
-    lbuttonoff: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#333',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderColor: '#742FCC',
-        borderRadius: '20px 0px 0px 20px',
-        ':hover': {
-            backgroundColor: '#444'
-        }
-    },
-    rbutton: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#742FCC',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderRadius: '0px 20px 20px 0px',
-        ':hover': {
-            backgroundColor: '#8942E3'
-        }
-    },
-    rbuttonoff: {
-        cursor: 'pointer',
-        textAlign: 'center',
-        backgroundColor: '#333',
-        display:'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        width: '160px',
-        height: '50px',
-        borderRadius: '0px 20px 20px 0px',
-        ':hover': {
-            backgroundColor: '#444'
-        }
-    },
     button: {
         cursor: 'pointer',
         textAlign: 'center',
@@ -199,9 +142,6 @@ const styles = StyleSheet.create({
         maxWidth: '20%',
         flexDirection: "column"
     },
-    smenuitem: {
-        padding: '10px 10px'
-    },
     content: {
         display:'flex',
         flex: 1,
@@ -209,16 +149,5 @@ const styles = StyleSheet.create({
         padding: '20px',
         overflow: 'scroll',
         alignContent: 'start'
-    },
-    header: {
-        display:'flex'
-    },
-    main: {
-        display:'flex',
-        flex: 1,
-    },
-    footer: {
-        display:'flex',
-        backgroundColor: '#0f0d08'
     }
 })

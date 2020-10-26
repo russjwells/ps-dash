@@ -16,7 +16,7 @@ const LaunchPadItem = (props) => {
         <div 
             onClick={handleClick}
             className={css(styles.tab)}
-            style={{width: '120px', height: '30px', textAlign: 'left', overflow:'visible', backgroundColor: '#222', cursor: 'pointer', textAlign: 'center', marginRight:'200px', hover: ''}}
+            style={{width: '120px', height: '30px', textAlign: 'center', overflow:'visible', backgroundColor: '#222', cursor: 'pointer', marginRight:'200px', hover: ''}}
         >
             🚀 {el.name.substr(0, el.name.indexOf(" "))} 
             {
