@@ -10,7 +10,7 @@ const LaunchPad = () => {
             {Data.campaigns.map(el => {
                     if (el.watch === true){
                         return (
-                            <LaunchPadItem el={el} />
+                            <LaunchPadItem key={el} el={el} />
                         )
                     }
                 })}
