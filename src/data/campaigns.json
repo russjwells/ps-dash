@@ -67,7 +67,7 @@
         "segment_id": 1,
         "media": "https://images.unsplash.com/photo-1537800534001-f3e01aa1c34c",
         "stats": null,
-        "watch": false 
+        "watch": true 
       }
     ],
     "segments": [

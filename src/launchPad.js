@@ -6,7 +6,7 @@ const LaunchPad = () => {
 
     const Data = useContext(DashContext)
     return(
-        <div class={{display: 'flex', flexDirection: 'row', justifyContent:'space-around'}}>
+        <div style={{display: 'flex', flexDirection: 'row', justifyContent:'space-around'}}>
             {Data.campaigns.map(el => {
                     if (el.watch === true){
                         return (
