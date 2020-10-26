@@ -35,7 +35,7 @@ const Preview = () => {
                                         checked: <span style={{fontSize:'10px'}}>🔎</span>, 
                                         unchecked: <span style={{fontSize:'10px'}}>📨</span>,
                                     }}
-                                    onChange={toggleWatch} 
+                                    //onChange={(el.id) => toggleWatch} 
                                 />
                             </Table.Cell>
                             <Table.Cell style={{width: '20%', textAlign: 'center'}}>{el.name}</Table.Cell>
