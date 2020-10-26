@@ -1,6 +1,7 @@
 import React, {useContext, useState} from 'react'
 import DashContext from './dashContext.js'
 import LaunchPadItemDetails from './launchPadItemDetails.js'
+import {StyleSheet, css} from 'aphrodite'
 
 const LaunchPadItem = (props) => {
 
@@ -14,7 +15,8 @@ const LaunchPadItem = (props) => {
     return(
         <div 
             onClick={handleClick}
-            style={{width: '120px', height: '30px', textAlign: 'left', overflow:'visible', backgroundColor: '#222', cursor: 'pointer', textAlign: 'center', marginRight:'200px'}}
+            className={css(styles.tab)}
+            style={{width: '120px', height: '30px', textAlign: 'left', overflow:'visible', backgroundColor: '#222', cursor: 'pointer', textAlign: 'center', marginRight:'200px', hover: ''}}
         >
             🚀 {el.name.substr(0, el.name.indexOf(" "))} 
             {
@@ -25,3 +27,11 @@ const LaunchPadItem = (props) => {
 }
 
 export default LaunchPadItem
+
+const styles = StyleSheet.create({
+    tab: {
+        ':hover': {
+            backgroundColor: '#444'
+        },
+    }
+})

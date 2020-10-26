@@ -10,7 +10,7 @@ const LaunchPadItemDetails = (props) => {
     const el = props.el
     if (props.el.status === "Sent"){
         return(
-            <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'202px', backgroundColor: '#222', color:'#FFF', display: 'flex', flexDirection: 'column', justifyContent:'space-around'}}>
+            <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'198px', backgroundColor: '#222', color:'#FFF', display: 'flex', flexDirection: 'column', justifyContent:'space-around'}}>
                 <div>🚀 {el.name}</div>
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', fontSize: '16pt'}}>
                     <div style={{fontSize: '24pt', color: 'lightblue'}}>
@@ -31,11 +31,14 @@ const LaunchPadItemDetails = (props) => {
         )
     } else {
         return(
-            <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'202px', backgroundColor: '#222', color:'#FFF', display: 'flex', flexDirection: 'column', justifyContent:'space-around'}}>
-                <div>🚀 {el.name}</div>
-                <div className={css(styles.button)}>
-                    <div className={css(styles.buttonText)}>Launch</div>
+            <div style={{position: 'relative', left:'0px', top:'-222px', width: '300px', height:'198px', backgroundColor: '#222', color:'#FFF', display: 'flex', flexDirection: 'column', justifyContent:'flex-start'}}>
+                <div style={{paddingTop: '3px'}}>🚀 {el.name}</div>
+                <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around', flex: '1'}}>
+                    <div className={css(styles.button)}>
+                        <div className={css(styles.buttonText)}>Launch</div>
+                    </div>
                 </div>
+                
             </div>
         )
     }
